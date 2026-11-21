@@ -1,10 +1,10 @@
 # Single source of truth for the pack. README's catalogue and the .skill packages are
 # generated/validated from this file (scripts/validate_index.py, scripts/build_packages.py).
-version: 0.1.0
+version: 0.2.0
 skills:
   - id: nse-instrument-master
     tier: free
-    adapters: [kite_public, kotak_neo, file]
+    adapters: [kite_public, upstox, dhan, fyers, angel, groww, shoonya, breeze, fivepaisa, aliceblue, kotak_neo, file]
     login: false
     summary: Resolve "NIFTY 23 Nov 26000 CE" to the exact symbol, token, lot size, tick and expiry from the day's master.
   - id: fno-expiry-calendar
@@ -14,17 +14,17 @@ skills:
     summary: Next N expiries, weekly vs monthly, holiday shifts, sessions to expiry, IST market state.
   - id: option-chain-snapshot
     tier: free
-    adapters: [nse_public, kite, local_store]
+    adapters: [nse_public, gdfl, kite, upstox, dhan, fyers, angel, groww, shoonya, breeze, fivepaisa, aliceblue, local_store]
     login: false
     summary: Clean chain with own Black-76 IVs and Greeks, ATM, straddle, expected move, PCR, max pain.
   - id: iv-skew-analyzer
     tier: free
-    adapters: [nse_public, kite, nse_archives, local_store]
+    adapters: [nse_public, gdfl, kite, upstox, dhan, fyers, angel, groww, shoonya, breeze, fivepaisa, aliceblue, nse_archives, local_store]
     login: false
     summary: OTM smile, 25/10-delta RR and BF, ATM term structure, IV percentile and rank.
   - id: gex-dealer-positioning
     tier: free
-    adapters: [nse_public, kite, local_store]
+    adapters: [nse_public, gdfl, kite, upstox, dhan, fyers, angel, groww, shoonya, breeze, fivepaisa, aliceblue, local_store]
     login: false
     summary: GEX by strike, zero-gamma flip, call/put walls, with the dealer assumption stated.
   - id: fno-cost-calculator
@@ -39,12 +39,12 @@ skills:
     summary: Units by risk budget and margin, exact max loss and breakevens, naked-leg warnings.
   - id: broker-margin-check
     tier: paid
-    adapters: [kite, kotak_neo]
+    adapters: [kite, upstox, dhan, fyers, angel, groww, shoonya, breeze, aliceblue, kotak_neo]
     login: true
-    summary: SPAN + exposure margin and hedge benefit for a basket via the broker API.
+    summary: SPAN + exposure margin (and hedge benefit where reported) for a basket via any of 10 broker APIs.
   - id: sebi-order-prep
     tier: paid
-    adapters: [kite_public, kite, kotak_neo]
+    adapters: [kite, upstox, dhan, fyers, angel, groww, shoonya, breeze, fivepaisa, aliceblue, kotak_neo, xts]
     login: true
     summary: Dry-run payloads with freeze slicing, tick/band checks, throttle, Algo-ID; confirmed send only.
   - id: fno-trade-journal

@@ -6,7 +6,7 @@ compatibility: Python 3.11+ with nsefno installed. Uses option-chain-snapshot in
 metadata:
   tier: free
   adapters: nse_public kite nse_archives local_store
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # IV skew analyzer

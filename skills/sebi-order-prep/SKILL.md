@@ -2,11 +2,11 @@
 name: sebi-order-prep
 description: Turn a trade plan for NSE/BSE index options or futures into exact broker order payloads with SEBI retail-algo and exchange guardrails - lot-size validation from the instrument master, freeze-quantity slicing, tick-size and price-band checks, max-lots cap, sub-10 orders/sec throttle, Algo-ID tag field, static-IP reminder - shown as a DRY RUN. Sends only after the user explicitly confirms, using a 60-second confirmation token bound to the exact payload. Use when the user wants to prepare, check or place an F&O order.
 license: MIT
-compatibility: Python 3.11+ with nsefno installed. Dry run needs only the instrument master. Sending needs Kite Connect (KITE_API_KEY, KITE_ACCESS_TOKEN) during market hours from the broker-whitelisted static IP.
+compatibility: Python 3.11+ with nsefno installed. Dry run needs only a public instrument master. Sending needs the user's broker credentials (kite, upstox, dhan, fyers, angel, groww, shoonya, breeze, fivepaisa, aliceblue, kotak_neo or xts) during market hours from the broker-whitelisted static IP.
 metadata:
   tier: paid
-  adapters: kite_public kite kotak_neo
-  version: 0.1.0
+  adapters: kite upstox dhan fyers angel groww shoonya breeze fivepaisa aliceblue kotak_neo xts
+  version: 0.2.0
 ---
 
 # SEBI-aware order prep
@@ -20,9 +20,12 @@ the user has not explicitly confirmed in this conversation.
    [{"instrument":"NIFTY 23 Nov 26200 CE","side":"BUY","lots":2,"order_type":"LIMIT","price":82.05},
     {"instrument":"NIFTY 23 Nov 26400 CE","side":"SELL","lots":2,"order_type":"LIMIT","price":31.10}]
    ```
-2. Dry run: `python scripts/order.py prep --plan plan.json --index NIFTY --freeze-qty <qty> --md`
-   - Pass `--freeze-qty` from the exchange's current freeze-limit file (or use the Kotak Neo
-     master which carries it); without it orders are not sliced and a warning is shown.
+2. Dry run: `python scripts/order.py prep --plan plan.json --broker <broker> --index NIFTY --md`
+   - The payload is built in that broker's exact API format from its own instrument master.
+   - Upstox, 5paisa, Angel, Groww and Kotak masters carry the per-order quantity cap, so slicing
+     is automatic. For others pass `--freeze-qty` (exchange figure, e.g. NIFTY 1801) or a warning
+     is shown and orders are not sliced.
+   - Shoonya and Breeze reject MARKET orders via API: the prep fails fast.
 3. Show the user the full dry run: resolved symbols, lot sizes, quantities, slices, the
    JSON payload and EVERY warning. Ask: "Send these N orders? (yes/no)".
 4. Only on an explicit "yes" for this exact payload, within 60 s:

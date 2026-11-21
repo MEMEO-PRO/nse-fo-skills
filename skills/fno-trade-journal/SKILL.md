@@ -6,7 +6,7 @@ compatibility: Python 3.11+ with nsefno installed. Stores data in SQLite at ~/.n
 metadata:
   tier: paid
   adapters: local_store rates
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # F&O trade journal

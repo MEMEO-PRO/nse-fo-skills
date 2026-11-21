@@ -27,12 +27,28 @@ class Instrument:
     tick_size: float
     tradingsymbol: str
     token: str               # broker/exchange token
-    freeze_qty: int | None = None
+    freeze_qty: int | None = None      # exchange freeze figure: orders must be STRICTLY below it
     source: str = ""
+    max_order_qty: int | None = None   # broker-published max quantity per order (inclusive)
+    extra: tuple = ()                  # broker-specific fields as (key, value) pairs
+
+    def get(self, key: str, default=None):
+        return dict(self.extra).get(key, default)
+
+    @property
+    def order_qty_cap(self) -> int | None:
+        """Largest allowed quantity in one order (inclusive), from either convention."""
+        if self.max_order_qty:
+            return self.max_order_qty
+        if self.freeze_qty:
+            return self.freeze_qty - 1
+        return None
 
     def to_dict(self) -> dict:
         d = asdict(self)
         d["expiry"] = self.expiry.isoformat()
+        d["extra"] = dict(self.extra)
+        d["order_qty_cap"] = self.order_qty_cap
         return d
 
 

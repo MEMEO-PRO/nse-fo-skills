@@ -2,7 +2,7 @@
 
 # nse-fo-skills
 
-**Agent Skills for Indian F&O traders: option chain, GEX, skew, expiry, costs, sizing and SEBI-aware order prep.**
+**Agent Skills for Indian F&O traders: option chain, GEX, skew, expiry, costs, sizing and SEBI-aware order prep, across 12 brokers.**
 
 Works with Claude Code, Codex CLI, Cursor, Gemini CLI and the Claude app's Skills tab.
 
@@ -10,9 +10,10 @@ Works with Claude Code, Codex CLI, Cursor, Gemini CLI and the Claude app's Skill
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Skills](https://img.shields.io/badge/skills-10-orange)
-![Tests](https://img.shields.io/badge/tests-115%20passing-brightgreen)
+![Brokers](https://img.shields.io/badge/brokers-12-blueviolet)
+![Tests](https://img.shields.io/badge/tests-152%20passing-brightgreen)
 
-[Why](#why-this-exists) · [Quick start](#quick-start) · [Skills](#the-10-skills) · [Workflows](#workflows) · [How it works](#how-it-works) · [Accuracy](#accuracy-and-testing) · [Guardrails](#compliance-guardrails) · [Disclaimer](#disclaimer)
+[Why](#why-this-exists) · [Quick start](#quick-start) · [Brokers](#brokers-and-data-providers) · [Skills](#the-10-skills) · [Workflows](#workflows) · [How it works](#how-it-works) · [Accuracy](#accuracy-and-testing) · [Guardrails](#compliance-guardrails) · [Disclaimer](#disclaimer)
 
 </div>
 
@@ -102,7 +103,41 @@ nsefno expiry NIFTY --md          # smoke test; no login needed
 
 ### No-login starter path
 
-Seven skills run with **no broker account**. They use the public Kite instruments dump (contract metadata), the NSE public option chain, NSE's official bhavcopy archive, and the bundled rate and holiday tables.
+Seven skills run with **no broker account**. They use any of 10 public broker instrument masters, the NSE public option chain, NSE's official bhavcopy archive, and the bundled rate and holiday tables.
+
+## Brokers and data providers
+
+One interface covers every adapter: instrument master, option chain, basket margin, and order payload and placement. A skill takes `--broker`, `--source` or `--master`, and nothing else changes.
+
+| Provider | Public master<br/>(no login) | Option chain | Margin | Orders |
+|---|:-:|:-:|:-:|:-:|
+| Zerodha Kite (`kite`) | ✅ live | ✅ | ✅ + hedge benefit | ✅ |
+| Upstox (`upstox`) | ✅ live | ✅ native chain | ✅ + hedge benefit | ✅ v3 |
+| Dhan (`dhan`) | ✅ live | ✅ native chain | ✅ + hedge benefit | ✅ |
+| Fyers (`fyers`) | ✅ live | ✅ native chain | ✅ | ✅ |
+| Angel One SmartAPI (`angel`) | ✅ live | ✅ | ✅ | ✅ |
+| Groww (`groww`) | ✅ live | ✅ native chain | ✅ | ✅ |
+| Shoonya / Finvasia (`shoonya`) | ✅ live | ✅ | ✅ SpanCalc | ✅ LIMIT only |
+| ICICI Direct Breeze (`breeze`) | ✅ live | ✅ | ✅ | ✅ LIMIT only |
+| 5paisa (`fivepaisa`) | ✅ live | ✅ | – | ✅ |
+| Alice Blue (`aliceblue`) | ✅ live | ✅ LTP + OI | ✅ | ✅ |
+| Kotak Neo (`kotak_neo`) | CSV via SDK | – | ✅ SDK | ✅ SDK |
+| Symphony XTS: IIFL, Jainam… (`xts`) | any master | – | – | ✅ |
+| NSE public site (`nse_public`) | – | ✅ best effort | – | – |
+| NSE archives (bhavcopy) | – | EOD / IV history | – | – |
+| Global Datafeeds (`gdfl`) | – | ✅ | – | – |
+
+**All 10 public masters were downloaded live and parsed by this code on 21 Nov 2026.** They agree on NIFTY lot 65, the holiday-shifted 23 Nov expiry, BANKNIFTY 30, the SENSEX 20→25 change across series, and the universal exchange token (64497 for NIFTY 23-Nov 26000 CE). The authenticated calls follow each broker's **official SDK source or API docs** and are tested against mocked responses, but they have not been run with real credentials. [docs/brokers.md](docs/brokers.md) lists the verification level of every call, the credentials each broker needs, and the known documentation gaps.
+
+```bash
+nsefno brokers --md                                     # capability matrix + env vars per broker
+nsefno master resolve "NIFTY 23 Nov 26000 CE" --master upstox
+nsefno gex NIFTY --source dhan --expiry next --md       # chain from your broker
+nsefno margin --broker fyers --legs basket.json --md
+nsefno order prep --broker groww --plan plan.json --md  # dry run in Groww's exact API format
+```
+
+Two details are handled for you. Brokers report open interest in either contracts or units, so it is **auto-detected and normalised**. Per-order quantity caps come in two conventions, the exchange freeze figure (NIFTY `1801`) and the broker max quantity (`1755`), and **both slice to 27 lots**.
 
 ## The 10 skills
 
@@ -140,16 +175,15 @@ Try it: *"Run the premarket-fno-check workflow for NIFTY."*
 flowchart LR
   A["Agent<br/>(Claude Code, Codex, Cursor, Gemini)"] -->|reads SKILL.md, runs scripts| S["skills/*<br/>10 skills + 4 workflows"]
   S --> P["nsefno package<br/>session · calendar · instruments · chain<br/>greeks · gex · skew · costs · sizer · orders · journal"]
-  P --> D1["kite_public<br/>instrument master (no login)"]
-  P --> D2["nse_public<br/>option chain (best effort)"]
+  P --> D1["10 public broker masters<br/>(no login)"]
+  P --> D2["nse_public · gdfl<br/>option chain"]
   P --> D3["nse_archives<br/>UDiFF bhavcopy (IV history)"]
   P --> D4["local_store<br/>~/.nsefno snapshots, SQLite"]
   P --> D5["rates<br/>charges.yaml, holidays.yaml"]
-  P -.login.-> B1["kite<br/>quotes · margins · orders"]
-  P -.login.-> B2["kotak_neo<br/>scrip master · margins"]
+  P -.login.-> B1["brokers/*<br/>kite · upstox · dhan · fyers · angel · groww<br/>shoonya · breeze · 5paisa · aliceblue · kotak_neo · xts"]
 ```
 
-Skills never call a broker SDK directly. They go through the shared `nsefno` package, and **only adapters touch the network**. To add Upstox, Dhan or Fyers you write one adapter file, and no skill logic changes.
+Skills never call a broker SDK directly. They go through the shared `nsefno` package, and **only adapters touch the network**. Each broker is one file in `nsefno/brokers/` implementing the same five methods, so adding another broker changes no skill logic.
 
 ```text
 nse-fo-skills/
@@ -157,10 +191,11 @@ nse-fo-skills/
 ├── workflows/*.yaml                                # outcome-oriented chains
 ├── skills-index.yaml                               # single source of truth
 ├── nsefno/                                         # shared package (pip install -e .)
-│   ├── adapters/  kite · nse_public · nse_archives · kotak_neo · local_store
+│   ├── brokers/   kite · upstox · dhan · fyers · angel · groww · shoonya · breeze · fivepaisa · aliceblue · kotak_neo · xts
+│   ├── adapters/  nse_public · nse_archives · local_store        vendors/  gdfl
 │   ├── data/      charges.yaml · holidays.yaml · indices.yaml (dated, sourced)
 │   └── greeks · chain · gex · skew · costs · sizer · orders · journal · calendar · session · cli
-├── tests/                                          # 115 offline tests, synthetic fixtures, golden output
+├── tests/                                          # 152 offline tests, real-format broker fixtures, golden output
 └── scripts/  validate_index.py · build_packages.py · make_fixtures.py
 ```
 
@@ -189,7 +224,7 @@ Full notes: [GEX method](skills/gex-dealer-positioning/references/gex-method.md)
 ## Accuracy and testing
 
 ```bash
-pip install -e ".[dev]" && pytest          # 115 tests, offline, about 5 s
+pip install -e ".[dev]" && pytest          # 152 tests, offline (network blocked), about 3 s
 python scripts/validate_index.py           # Agent Skills spec + index/workflow consistency
 ```
 
@@ -203,11 +238,12 @@ python scripts/validate_index.py           # Agent Skills spec + index/workflow 
 | **Costs** | Hand-computed legs. STT before and after 1 Apr 2026. NSE transaction rates before and after 1 Mar 2026. BSE rates, the futures min(0.03%, ₹20) rule, exercise STT |
 | **Sizing** | Bull call spread, iron condor, short strangle (unlimited and naked), long put, short futures, and each binding constraint |
 | **Orders** | Freeze slicing edge cases, tick and band checks, a token bound to the payload with a 60 s expiry, blocks in pre-open and after close, stop on the first error, a sliding-window throttle (never more than 8 per second), log redaction |
+| **Brokers** | Masters parsed from real-format slices of all 10 public files must agree on lots, expiries and exchange tokens. Freeze vs max-qty caps. Order payloads for every broker. Mocked chain, margin and order calls checked for exact URLs, headers (Breeze SHA-256 checksum, Shoonya jData/jKey, Fyers `app:token`) and parsing. OI unit detection |
 | **Packaging** | Each `.skill` zip runs **in isolation** (`python -I`) with the vendored package |
 | **CI** | Python 3.11 to 3.13, ruff, index validator, package build, gitleaks secret scan, and a weekly run that fails if `charges.yaml` is more than 90 days old |
 
 > [!NOTE]
-> **Live sources.** The instrument master (Kite public dump) and the NSE bhavcopy archive were checked live while this was built. The real bhavcopy IV history confirmed the holiday-shifted expiries (Mon 19 Oct, Mon 9 Nov 2026). The NSE public option-chain endpoint is unofficial: the parser is tested against its documented JSON layout, but NSE changes it without notice, so it is **best effort** and not suitable for live trading. Use `--source kite` for a robust feed.
+> **Live sources.** All 10 public broker masters and the NSE bhavcopy archive were checked live while this was built. The real bhavcopy IV history confirmed the holiday-shifted expiries (Mon 19 Oct, Mon 9 Nov 2026). The NSE public option-chain endpoint is unofficial: the parser is tested against its documented JSON layout, but NSE changes it without notice, so it is **best effort** and not suitable for live trading. Use `--source kite` for a robust feed.
 
 ## Compliance guardrails
 
@@ -226,7 +262,7 @@ python scripts/validate_index.py           # Agent Skills spec + index/workflow 
 `~/.nsefno/config.yaml` (optional):
 
 ```yaml
-broker: kite              # kite | kotak_neo
+broker: kite              # kite | upstox | dhan | fyers | angel | groww | shoonya | breeze | fivepaisa | aliceblue | kotak_neo | xts
 max_lots_per_leg: 10      # hard cap enforced by sebi-order-prep
 orders_per_second: 8      # must stay < 10 (SEBI threshold)
 algo_id: null             # exchange/broker Algo-ID tag, if you have one
@@ -236,14 +272,14 @@ product: NRML
 
 | Env var | Used by |
 |---|---|
-| `KITE_API_KEY`, `KITE_ACCESS_TOKEN` | Kite quotes, margins and orders |
-| `NEO_CONSUMER_KEY`, `NEO_MOBILE`, `NEO_UCC`, `NEO_MPIN`, `NEO_TOTP` | Kotak Neo (`pip install neo_api_client`) |
+| Broker credentials | One set per broker, e.g. `UPSTOX_ACCESS_TOKEN`, or `DHAN_CLIENT_ID` + `DHAN_ACCESS_TOKEN`. Run `nsefno brokers --md` or see [docs/brokers.md](docs/brokers.md) |
 | `NSEFNO_HOME` | Data directory (default `~/.nsefno`) |
 | `NSEFNO_MASTER` | Default instrument master (`kite_public`) |
 
 ## CLI reference
 
 ```bash
+nsefno brokers [--check-master upstox]                  # broker capability matrix
 nsefno session [--exchange BSE]                         # market state now
 nsefno expiry NIFTY -n 6 [--no-master]                  # calendar
 nsefno master resolve "NIFTY 23 Nov 26000 CE"           # contract lookup
@@ -255,7 +291,7 @@ nsefno ivhistory NIFTY --days 260                       # backfill from bhavcopy
 nsefno cost --index NIFTY --leg "BUY 2 CE 26200 @ 82" --leg "SELL 2 CE 26400 @ 31"
 nsefno size --index NIFTY --capital 500000 --risk-pct 2 --spot 26150 --leg "..." --leg "..."
 nsefno margin --broker kite --legs basket.json
-nsefno order prep --plan plan.json --index NIFTY --freeze-qty 1800
+nsefno order prep --broker upstox --plan plan.json --index NIFTY
 nsefno order send --sha <payload_sha256> --confirm <token>
 nsefno journal plan|fill|import|review ...
 ```
@@ -265,12 +301,12 @@ Every command accepts `--md` (markdown output), `--today YYYY-MM-DD` and `--lot-
 ## Roadmap
 
 - **v0.2:** `orderbook-microstructure` on TBT and 1-second data (queue imbalance, OFI, sweep detection), `oi-buildup-scanner`, `event-risk-calendar` (RBI, CPI, results, US data), `backtest-fno` with Indian costs and lot sizes
-- Adapters for Upstox, Dhan and Fyers (see the [adapter guide](CONTRIBUTING.md#adding-a-broker-adapter-upstox-dhan-fyers-) and open `good first issue` tickets)
+- Live-credential verification runs for each broker (community help wanted: run `order prep` and the read-only calls with your own login and report back), and adapters for TrueData and Motilal Oswal
 - Per-strike freeze quantities from the exchange file, and AMO support
 
 ## Contributing
 
-PRs are welcome, especially broker adapters and corrections with an official source. See [CONTRIBUTING.md](CONTRIBUTING.md). The core rules are: no hardcoded quantities, every rate dated and sourced, and no advice.
+PRs are welcome, especially confirmations from live broker sessions and corrections with an official source. See [CONTRIBUTING.md](CONTRIBUTING.md). The core rules are: no hardcoded quantities, every rate dated and sourced, and no advice.
 
 ## Disclaimer
 

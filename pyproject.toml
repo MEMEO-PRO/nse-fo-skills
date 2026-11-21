@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nsefno"
-version = "0.1.0"
+version = "0.2.0"
 description = "Agent Skills + Python toolkit for NSE/BSE index options: instrument master, expiry calendar, option chain, Black-76 Greeks, IV skew, GEX, Indian F&O costs, position sizing and SEBI-aware order prep."
 readme = "README.md"
 license = { text = "MIT" }

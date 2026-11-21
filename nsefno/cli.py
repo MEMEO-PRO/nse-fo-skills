@@ -344,7 +344,8 @@ def cmd_margin(args):
     from . import margin
 
     legs = json.loads(Path(args.legs).read_text() if Path(args.legs).exists() else args.legs)
-    res = margin.basket_margin(args.broker, legs)
+    m = sources.get_master(args.master, args.master_file) if args.master else None
+    res = margin.basket_margin(args.broker, legs, m)
     md = (f"**Margin ({args.broker})**: required {_fmt(res.get('final_total'))} "
           f"(SPAN {_fmt(res.get('span'))}, exposure {_fmt(res.get('exposure'))}), "
           f"hedge benefit {_fmt(res.get('hedge_benefit'))}")
@@ -354,10 +355,14 @@ def cmd_margin(args):
 def cmd_order(args):
     if args.action == "prep":
         plan = json.loads(Path(args.plan).read_text() if Path(args.plan).exists() else args.plan)
-        m = sources.get_master(args.master, args.master_file)
+        cfg = orders.load_config()
+        broker = args.broker or cfg.get("broker", "kite")
+        m = (sources.get_master(args.master, args.master_file) if args.master
+             else sources.broker_master(broker))
         freeze = {args.index.upper(): args.freeze_qty} if args.freeze_qty and args.index else {}
-        res = orders.prepare(plan, m, freeze=freeze)
-        md = [f"**DRY RUN - nothing sent.** Market: {res['market_state']['state']} | {res['n_orders']} order(s) | "
+        res = orders.prepare(plan, m, cfg, freeze=freeze, broker=broker)
+        md = [f"**DRY RUN - nothing sent.** Broker: {res['broker']} | Market: {res['market_state']['state']} | "
+              f"{res['n_orders']} order(s) | "
               f"sha256 `{res['payload_sha256'][:12]}`", "", "| Leg | Symbol | Expiry | Lot | Lots | Qty | Slices |",
               "|---|---|---|---|---|---|---|"]
         md += [f"| {c['leg']} | {c['resolved']} | {c['expiry']} | {c['lot_size']} | {c['lots']} | {c['qty']} | "
@@ -370,7 +375,8 @@ def cmd_order(args):
         pend = orders.pending_path(args.sha)
         if not pend.exists():
             raise NseFnoError(f"No prepared payload {args.sha}; run `nsefno order prep` first.")
-        res = orders.send(json.loads(pend.read_text()), args.confirm, args.broker)
+        pending = json.loads(pend.read_text())
+        res = orders.send(pending["orders"], args.confirm, pending["broker"])
         _emit(args, envelope("order_send", res, source=args.broker),
               "\n".join(f"- {r['order']['tradingsymbol']} {r['order']['quantity']}: {r['status']} "
                         f"{r.get('response') or r.get('error')}" for r in res))
@@ -405,6 +411,23 @@ def cmd_journal(args):
         _emit(args, envelope("journal_review", res, source="journal"), "\n".join(md))
 
 
+def cmd_brokers(args):
+    from .brokers import REGISTRY, get_broker
+
+    caps = [get_broker(n).capabilities() for n in REGISTRY]
+    yn = {True: "yes", False: "-"}
+    md = ["| Broker | Public master | Option chain | Margin | Orders | Credentials (env) |",
+          "|---|---|---|---|---|---|"]
+    md += [f"| {c['display']} (`{c['broker']}`) | {yn[c['public_master']]} | {yn[c['option_chain']]} | "
+           f"{yn[c['margin']]} | {yn[c['orders']]} | {', '.join(c['credentials'])} |" for c in caps]
+    if args.check_master:
+        m = sources.get_master(args.check_master)
+        exps = [e for e in m.expiries("NIFTY") if e >= _today(args)][:1]
+        md.append(f"\n`{args.check_master}` master: {len(m)} contracts; NIFTY next expiry {exps[0] if exps else 'n/a'}, "
+                  f"lot {m.lot_size('NIFTY', exps[0]) if exps else 'n/a'}")
+    _emit(args, envelope("brokers", caps, source="nsefno.brokers"), "\n".join(md))
+
+
 # --------------------------------------------------------------------------- parser
 
 def build_parser() -> argparse.ArgumentParser:
@@ -412,10 +435,16 @@ def build_parser() -> argparse.ArgumentParser:
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--md", action="store_true", help="print a markdown summary instead of JSON")
     common.add_argument("--today", help="override 'today' (YYYY-MM-DD), for tests/backfills")
-    common.add_argument("--master", default=None, help="instrument master: kite_public (default) | kotak_neo | file")
+    common.add_argument("--master", default=None,
+                        help="instrument master: kite_public (default) | upstox | dhan | fyers | angel | groww | "
+                             "shoonya | breeze | fivepaisa | aliceblue | kotak_neo | file")
     common.add_argument("--master-file", action="append", help="CSV(s) for --master kotak_neo/file")
     common.add_argument("--lot-size", type=int, help="override lot size (otherwise from the instrument master)")
     sub = p.add_subparsers(dest="cmd", required=True)
+
+    s = sub.add_parser("brokers", parents=[common], help="supported brokers and what each can do")
+    s.add_argument("--check-master", help="download one broker's public master and print a sanity line")
+    s.set_defaults(fn=cmd_brokers)
 
     s = sub.add_parser("session", parents=[common], help="market state now (IST)")
     s.add_argument("--exchange", default="NSE")
@@ -436,7 +465,9 @@ def build_parser() -> argparse.ArgumentParser:
     chain_common = argparse.ArgumentParser(add_help=False)
     chain_common.add_argument("index")
     chain_common.add_argument("--expiry", default="next", help="YYYY-MM-DD | next | far | monthly")
-    chain_common.add_argument("--source", default="nse_public", help="nse_public | kite")
+    chain_common.add_argument("--source", default="nse_public",
+                              help="nse_public | gdfl | kite | upstox | dhan | fyers | angel | groww | shoonya | "
+                                   "breeze | fivepaisa | aliceblue")
     chain_common.add_argument("--allow-stale", action="store_true", help="analyse a chain past its stale_after")
     chain_common.add_argument("--rate", type=float, default=chain.DEFAULT_RATE)
     chain_common.add_argument("--full", action="store_true", help="include every strike in JSON")
@@ -491,8 +522,9 @@ def build_parser() -> argparse.ArgumentParser:
     s.set_defaults(fn=cmd_size)
 
     s = sub.add_parser("margin", parents=[common], help="broker basket margin (login required)")
-    s.add_argument("--broker", default="kite", choices=["kite", "kotak_neo"])
-    s.add_argument("--legs", required=True)
+    s.add_argument("--broker", default="kite")
+    s.add_argument("--legs", required=True, help='JSON: [{"instrument":"NIFTY 23 Nov 26200 CE","side":"BUY",'
+                                                  '"lots":1,"price":82}]')
     s.set_defaults(fn=cmd_margin)
 
     s = sub.add_parser("order", parents=[common], help="SEBI-aware order prep (dry run) / confirmed send")
@@ -502,7 +534,8 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--freeze-qty", type=int)
     s.add_argument("--sha")
     s.add_argument("--confirm")
-    s.add_argument("--broker", default="kite")
+    s.add_argument("--broker", help="kite | upstox | dhan | fyers | angel | groww | shoonya | breeze | fivepaisa | "
+                                    "aliceblue | kotak_neo | xts (default: config.yaml broker)")
     s.set_defaults(fn=cmd_order)
 
     s = sub.add_parser("journal", parents=[common], help="trade journal + weekly review")

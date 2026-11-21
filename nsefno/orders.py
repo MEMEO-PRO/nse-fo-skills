@@ -29,7 +29,7 @@ import yaml
 from . import session
 from .config import home, redact
 from .errors import ComplianceBlock
-from .instruments import Instrument, InstrumentMaster
+from .instruments import InstrumentMaster
 
 TOKEN_TTL_S = 60
 SEBI_OPS_LIMIT = 10          # orders/sec per exchange above which strategy registration is required
@@ -75,15 +75,17 @@ class RateLimiter:
 
 # ----------------------------- slicing / checks -----------------------------
 
-def slice_quantity(qty: int, lot: int, freeze_qty: int | None) -> list[int]:
-    """Split `qty` into slices that are whole lots and strictly below `freeze_qty`."""
+def slice_quantity(qty: int, lot: int, freeze_qty: int | None = None, max_order_qty: int | None = None) -> list[int]:
+    """Split `qty` into whole-lot slices. `freeze_qty` is the exchange figure (orders must be strictly
+    below it, e.g. NIFTY 1801); `max_order_qty` is an inclusive cap as some brokers publish it (1755)."""
     if qty <= 0 or qty % lot:
         raise ComplianceBlock(f"Quantity {qty} is not a positive multiple of lot size {lot}.")
-    if not freeze_qty:
+    cap = max_order_qty or (freeze_qty - 1 if freeze_qty else None)
+    if not cap:
         return [qty]
-    max_lots = (freeze_qty - 1) // lot
+    max_lots = cap // lot
     if max_lots < 1:
-        raise ComplianceBlock(f"Freeze qty {freeze_qty} is below one lot ({lot}).")
+        raise ComplianceBlock(f"Max order quantity {cap} is below one lot ({lot}).")
     per = max_lots * lot
     out = [per] * (qty // per)
     if qty % per:
@@ -152,23 +154,16 @@ def _log(event: str, body: dict) -> None:
 
 # ----------------------------- prepare / send -----------------------------
 
-def _kite_payload(inst: Instrument, side: str, qty: int, order_type: str, price: float | None,
-                  product: str, tag: str | None) -> dict:
-    p = {"exchange": inst.exchange, "tradingsymbol": inst.tradingsymbol, "transaction_type": side,
-         "quantity": qty, "order_type": order_type, "product": product, "validity": "DAY"}
-    if order_type == "LIMIT":
-        p["price"] = price
-    if tag:
-        p["tag"] = tag[:20]
-    return p
-
-
 def prepare(plan: list[dict], master: InstrumentMaster, cfg: dict | None = None,
             bands: dict[str, tuple[float, float]] | None = None, freeze: dict[str, int] | None = None,
-            now: dt.datetime | None = None) -> dict:
-    """Build the exact payloads + checklist. plan legs: {"instrument": text|tradingsymbol, "side",
-    "lots", "order_type": LIMIT|MARKET, "price"}."""
+            now: dt.datetime | None = None, broker: str | None = None) -> dict:
+    """Build the exact broker payloads + checklist. plan legs: {"instrument": text|tradingsymbol, "side",
+    "lots", "order_type": LIMIT|MARKET, "price", "product": NRML|MIS}. `master` should be the broker's own
+    master so trading symbols / tokens match what the broker expects."""
+    from .brokers import OrderIntent, get_broker
+
     cfg = cfg or load_config()
+    adapter = get_broker(broker or cfg.get("broker", "kite"))
     bands, freeze = bands or {}, freeze or {}
     state = session.market_state(now)
     orders, checklist, warnings = [], [], []
@@ -184,17 +179,20 @@ def prepare(plan: list[dict], master: InstrumentMaster, cfg: dict | None = None,
         qty = lots * inst.lot_size
         otype = leg.get("order_type", "LIMIT").upper()
         warnings += check_price(leg.get("price"), inst.tick_size, bands.get(inst.tradingsymbol), otype)
-        fq = inst.freeze_qty or freeze.get(inst.underlying) or freeze.get(inst.tradingsymbol)
-        if fq is None:
-            warnings.append(f"No freeze quantity known for {inst.underlying}; pass --freeze-qty "
-                            "or use a master that carries it (Kotak Neo). Not slicing.")
-        slices = slice_quantity(qty, inst.lot_size, fq)
+        fq = freeze.get(inst.underlying) or freeze.get(inst.tradingsymbol) or inst.freeze_qty
+        cap = None if fq and fq != inst.freeze_qty else inst.max_order_qty
+        if fq is None and cap is None:
+            warnings.append(f"No freeze quantity known for {inst.underlying}; pass --freeze-qty or use a "
+                            "master that carries it (upstox, angel, groww, fivepaisa, kotak_neo). Not slicing.")
+        slices = slice_quantity(qty, inst.lot_size, fq, cap)
         for q in slices:
-            orders.append(_kite_payload(inst, side, q, otype, leg.get("price"), leg.get("product", cfg["product"]),
-                                        cfg.get("algo_id")))
+            orders.append(adapter.order_payload(OrderIntent(
+                instrument=inst, side=side, quantity=q, order_type=otype, price=leg.get("price"),
+                product=leg.get("product", cfg["product"]), tag=cfg.get("algo_id"))))
         checklist.append({"leg": leg["instrument"], "resolved": inst.tradingsymbol, "expiry": inst.expiry.isoformat(),
                           "lot_size": inst.lot_size, "lots": lots, "qty": qty, "slices": slices,
-                          "tick_size": inst.tick_size, "freeze_qty": fq})
+                          "tick_size": inst.tick_size, "freeze_qty": fq,
+                          "max_order_qty": cap or (fq - 1 if fq else None)})
     if not cfg.get("static_ip"):
         warnings.append("No static_ip in ~/.nsefno/config.yaml. From 1 Apr 2026, API orders are accepted only "
                         "from the static IP whitelisted with your broker.")
@@ -208,14 +206,14 @@ def prepare(plan: list[dict], master: InstrumentMaster, cfg: dict | None = None,
     if not sendable:
         warnings.append(f"Market state is '{state['state']}': sending is blocked (no AMO/pre-open orders in v0.1).")
     token = issue_token(orders) if sendable else None
-    result = {"mode": "dry_run", "market_state": state, "orders": orders, "n_orders": len(orders),
+    result = {"mode": "dry_run", "broker": adapter.name, "market_state": state, "orders": orders, "n_orders": len(orders),
               "checklist": checklist, "warnings": warnings, "payload_sha256": payload_hash(orders),
               "confirm_token": token, "token_expires_in_s": TOKEN_TTL_S if token else None,
               "how_to_send": "Show this dry run to the user. ONLY if they explicitly confirm, run "
                              "`nsefno order send --sha <payload_sha256> --confirm <token>` within 60 s." if token else
               "Sending is blocked right now."}
     _log("prepared", {"payload_sha256": result["payload_sha256"], "orders": orders, "warnings": warnings})
-    pending_path(result["payload_sha256"]).write_text(json.dumps(orders))
+    pending_path(result["payload_sha256"]).write_text(json.dumps({"broker": adapter.name, "orders": orders}))
     return result
 
 
@@ -229,12 +227,9 @@ def send(prepared_orders: list[dict], token: str, broker: str = "kite", now: dt.
     cfg = load_config()
     limiter = limiter or RateLimiter(cfg["orders_per_second"])
     if sender is None:
-        if broker != "kite":
-            raise ComplianceBlock("Live sending is implemented for Kite in v0.1; use the dry-run payload with "
-                                  "your Kotak Neo client.")
-        from .adapters import kite
+        from .brokers import get_broker
 
-        sender = kite.place_order
+        sender = get_broker(broker).place_order
     results = []
     for o in prepared_orders:
         limiter.acquire()

@@ -6,7 +6,7 @@ compatibility: Python 3.11+ with nsefno installed. Works offline (rules + bundle
 metadata:
   tier: free
   adapters: kite_public rules
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # F&O expiry calendar

@@ -21,11 +21,15 @@ python scripts/validate_index.py
 python scripts/build_packages.py
 ```
 
-## Adding a broker adapter (Upstox, Dhan, Fyers, ...)
-- Add `nsefno/adapters/<broker>.py` exposing what applies: `load_instruments() -> InstrumentMaster`,
-  a chain builder returning `OptionChain` (OI in **contracts**), `basket_margin(legs)`, `place_order(payload)`.
-- Wire it into `nsefno/sources.py` / `nsefno/margin.py`, list it in `skills-index.yaml`.
-- Add parser tests with a small synthetic fixture in the broker's real column layout.
+## Adding a broker adapter
+- Subclass `nsefno.brokers.base.Broker` in `nsefno/brokers/<broker>.py`: `master_sources()` +
+  `parse_master()`, `option_chain()` (use `finalise_chain`, which normalises OI to contracts),
+  `basket_margin()`, `order_payload()` (pure function) and `place_order()`. Fill `VERIFICATION` honestly.
+- Register it in `nsefno/brokers/__init__.py`, add it to `docs/brokers.md` and `skills-index.yaml`.
+- Add a small real-format master slice to `tests/fixtures/brokers/` (contract metadata only) and
+  extend `tests/test_brokers.py`; mock HTTP by patching `Broker._request` (the network is blocked in tests).
+- **Live confirmation wanted:** if you have an account with a broker whose authenticated calls are
+  only `sdk`/`docs` verified, run the read-only calls and open an issue with the (redacted) result.
 
 ## Adding a skill
 1. `skills/<name>/SKILL.md` following the [Agent Skills spec](https://agentskills.io/specification)

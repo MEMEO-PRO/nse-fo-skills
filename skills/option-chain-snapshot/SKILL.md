@@ -2,11 +2,11 @@
 name: option-chain-snapshot
 description: Clean option-chain snapshot for one NSE index expiry (NIFTY, BANKNIFTY, FINNIFTY, MIDCPNIFTY) - LTP, bid/ask mid, OI and change in OI (in contracts), volume, IV solved with Black-76 on the put-call-parity forward, Greeks, ATM strike, ATM straddle, expected move, PCR and max pain. Use when the user asks for the option chain, ATM IV, straddle price, PCR, max pain, OI build-up at strikes, or needs a chain as input to GEX or skew.
 license: MIT
-compatibility: Python 3.11+ with nsefno installed. Starter path uses the NSE public option-chain JSON (best effort, no login); `--source kite` uses Kite Connect quotes (KITE_API_KEY, KITE_ACCESS_TOKEN); `--file` analyses a saved chain offline.
+compatibility: Python 3.11+ with nsefno installed. Starter path uses the NSE public option-chain JSON (best effort, no login); `--source <broker>` uses a logged-in broker (kite, upstox, dhan, fyers, angel, groww, shoonya, breeze, fivepaisa, aliceblue) or the gdfl vendor; `--file` works offline.
 metadata:
   tier: free
-  adapters: nse_public kite local_store
-  version: 0.1.0
+  adapters: nse_public gdfl kite upstox dhan fyers angel groww shoonya breeze fivepaisa aliceblue local_store
+  version: 0.2.0
 ---
 
 # Option chain snapshot
@@ -20,7 +20,10 @@ skill (GEX, skew) needs a fresh chain.
    - `--expiry` accepts `next`, `far`, `monthly` or `YYYY-MM-DD` (resolved against the
      instrument master, so holiday-shifted dates are right).
    - `--save` stores the snapshot under `~/.nsefno/snapshots/` so later runs can diff.
-   - `--source kite` for broker quotes (needed for SENSEX/BANKEX, which NSE does not publish).
+   - `--source <broker>` for the user's broker feed (needed for SENSEX/BANKEX, which NSE does not
+     publish): kite, upstox, dhan, fyers, angel, groww, shoonya, breeze, fivepaisa, aliceblue, or `gdfl`.
+     Upstox, Dhan, Fyers and Groww use their native option-chain endpoints. OI is normalised to
+     contracts automatically (`meta.oi_unit_reported` says what the broker sent).
    - `--file path.json` to analyse a saved NSE payload or a saved snapshot.
 2. If the command fails with `StaleDataError`, the chain is older than `stale_after`
    (120 s for NSE public). Say so. Only use `--allow-stale` when the user explicitly wants

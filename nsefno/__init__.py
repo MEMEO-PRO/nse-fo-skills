@@ -3,7 +3,7 @@
 Not investment advice. See DISCLAIMER.md.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 DISCLAIMER = (
     "Analytics only - not investment advice, not a recommendation to buy or sell. "

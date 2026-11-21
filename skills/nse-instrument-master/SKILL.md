@@ -2,11 +2,11 @@
 name: nse-instrument-master
 description: Resolve NSE/BSE index derivative contracts (NIFTY, BANKNIFTY, FINNIFTY, MIDCPNIFTY, NIFTYNXT50, SENSEX, BANKEX) from the day's instrument master - exact trading symbol, token, lot size, tick size and listed expiries. Use whenever a lot size, contract symbol, strike availability or expiry date is needed, e.g. "lot size of NIFTY next expiry 26000 CE", "what's the SENSEX lot size", "is there a 23 Nov BANKNIFTY expiry". Never answer these from memory.
 license: MIT
-compatibility: Python 3.11+ with nsefno installed (pip install -e . from the repo). Network access to api.kite.trade (public instruments dump, no login) or a Kotak Neo scrip-master CSV.
+compatibility: Python 3.11+ with nsefno installed (pip install -e . from the repo). Network access to any broker public master (Kite, Upstox, Dhan, Fyers, Angel, Groww, Shoonya, ICICI, 5paisa, Alice Blue - no login) or a Kotak Neo CSV.
 metadata:
   tier: free
-  adapters: kite_public kotak_neo file
-  version: 0.1.0
+  adapters: kite_public upstox dhan fyers angel groww shoonya breeze fivepaisa aliceblue kotak_neo file
+  version: 0.2.0
 ---
 
 # NSE instrument master
@@ -37,7 +37,12 @@ JSON envelope (`data` = instrument dict with `tradingsymbol`, `token`, `lot_size
 Quote the `source` and mention that lot size is per series when lots differ across expiries.
 
 ## Options
-- `--master kotak_neo --master-file nse_fo.csv` to use a Kotak Neo scrip master.
+- `--master <broker>` reads that broker's own public master (no login): `kite_public` (default),
+  `upstox`, `dhan`, `fyers`, `angel`, `groww`, `shoonya`, `breeze`, `fivepaisa`, `aliceblue`.
+  Use the user's own broker so the `tradingsymbol`/`token` match what that broker expects.
+  `--master kotak_neo --master-file nse_fo.csv` for a Kotak Neo CSV.
+- Output also carries `extra.exchange_token` (same across brokers) and `order_qty_cap`
+  (max quantity per order, where the master publishes a freeze/limit).
 - `--today YYYY-MM-DD` to evaluate as of another date.
 
 ## Never

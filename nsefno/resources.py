@@ -52,12 +52,27 @@ def holidays(exchange: str) -> dict[dt.date, str]:
     return out
 
 
+# Broker-specific names for the same underlying (verified against each broker's master file).
+UNDERLYING_ALIASES = {
+    "NIFTY50": "NIFTY", "NIFTYBANK": "BANKNIFTY", "MIDCAPNIFTY": "MIDCPNIFTY", "NIFTYNEXT50": "NIFTYNXT50",
+    "NIFTYFINSERVICE": "FINNIFTY", "NIFTYMIDSELECT": "MIDCPNIFTY",
+    # ICICI Breeze stock codes
+    "CNXBAN": "BANKNIFTY", "NIFFIN": "FINNIFTY", "NIFSEL": "MIDCPNIFTY", "NIFNEX": "NIFTYNXT50",
+    "BSESEN": "SENSEX",
+    # BSE product codes used by Shoonya / Dhan
+    "BSXOPT": "SENSEX", "BSXFUT": "SENSEX", "BKXOPT": "BANKEX", "BKXFUT": "BANKEX",
+    "SX50OPT": "SENSEX50", "SX50FUT": "SENSEX50",
+}
+
+
+def normalise_underlying(name: str) -> str:
+    key = (name or "").upper().replace(" ", "").replace("_", "")
+    return UNDERLYING_ALIASES.get(key, (name or "").upper().strip())
+
+
 def index_rule(index: str) -> dict:
     rules = index_rules()
-    key = index.upper().replace(" ", "")
-    aliases = {"NIFTY50": "NIFTY", "BANK NIFTY": "BANKNIFTY", "NIFTYBANK": "BANKNIFTY",
-               "FINNIFTY": "FINNIFTY", "MIDCAPNIFTY": "MIDCPNIFTY", "NIFTYNEXT50": "NIFTYNXT50"}
-    key = aliases.get(key, key)
+    key = normalise_underlying(index)
     if key not in rules:
         raise KeyError(f"Unknown index {index!r}. Known: {', '.join(rules)}")
     return {"index": key, **rules[key]}

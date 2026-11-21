@@ -6,7 +6,7 @@ compatibility: Python 3.11+ with nsefno installed; a fresh chain from option-cha
 metadata:
   tier: free
   adapters: nse_public kite local_store
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # GEX & dealer positioning

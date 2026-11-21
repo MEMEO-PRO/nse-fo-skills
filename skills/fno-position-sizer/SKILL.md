@@ -6,7 +6,7 @@ compatibility: Python 3.11+ with nsefno installed. Lot size from the instrument 
 metadata:
   tier: free
   adapters: kite_public rates
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # F&O position sizer

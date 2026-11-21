@@ -6,7 +6,7 @@ compatibility: Python 3.11+ with nsefno installed. Rates are bundled in nsefno/d
 metadata:
   tier: free
   adapters: rates kite_public
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # F&O cost calculator
