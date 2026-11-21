@@ -170,17 +170,7 @@ Try it: *"Run the premarket-fno-check workflow for NIFTY."*
 
 ## How it works
 
-```mermaid
-flowchart LR
-  A["Agent<br/>(Codex, Cursor, Gemini, ...)"] -->|reads SKILL.md, runs scripts| S["skills/*<br/>10 skills + 4 workflows"]
-  S --> P["nsefno package<br/>session · calendar · instruments · chain<br/>greeks · gex · skew · costs · sizer · orders · journal"]
-  P --> D1["10 public broker masters<br/>(no login)"]
-  P --> D2["nse_public · gdfl<br/>option chain"]
-  P --> D3["nse_archives<br/>UDiFF bhavcopy (IV history)"]
-  P --> D4["local_store<br/>~/.nsefno snapshots, SQLite"]
-  P --> D5["rates<br/>charges.yaml, holidays.yaml"]
-  P -.login.-> B1["brokers/*<br/>kite · upstox · dhan · fyers · angel · groww<br/>shoonya · breeze · 5paisa · aliceblue · kotak_neo · xts"]
-```
+<p align="center"><img src="docs/assets/architecture.png" alt="Architecture: agent → skills → nsefno package → public data sources and broker adapters" width="100%"/></p>
 
 Skills never call a broker SDK directly. They go through the shared `nsefno` package, and **only adapters touch the network**. Each broker is one file in `nsefno/brokers/` implementing the same five methods, so adding another broker changes no skill logic.
 
