@@ -1,0 +1,17 @@
+id: expiry-day-risk
+title: Expiry-day gamma and position risk check
+when: expiry day, 09:30 and again ~13:30 IST
+inputs: { index: NIFTY, positions: "user legs" }
+steps:
+  - skill: fno-expiry-calendar
+    run: python skills/fno-expiry-calendar/scripts/expiry.py {index} -n 2 --md
+    gate: if is_expiry_today is false, say so and continue as a normal-day check
+  - skill: option-chain-snapshot
+    run: python skills/option-chain-snapshot/scripts/snapshot.py {index} --expiry next --save --md
+  - skill: gex-dealer-positioning
+    run: python skills/gex-dealer-positioning/scripts/gex.py {index} --expiry next --compare-previous --md
+    capture: distance from spot to flip and to each wall, in points and in expected-move units
+  - skill: fno-position-sizer
+    run: python skills/fno-position-sizer/scripts/size.py --index {index} --capital <capital> --risk-pct <risk> --spot <spot> --leg "..." --md
+    capture: max loss at current size; how many units fit today's risk budget
+output: Gamma near the money, distance to walls, units over budget (arithmetic only; the user decides).

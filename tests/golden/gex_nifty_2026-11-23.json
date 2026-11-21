@@ -1,0 +1,9 @@
+{
+ "net_gex_cr": -11304.853,
+ "flip_level": 26187.6,
+ "call_wall": 26350.0,
+ "put_wall": 26000.0,
+ "regime": "negative gamma (hedging amplifies moves)",
+ "spot_vs_flip": "below",
+ "convention": "classic"
+}

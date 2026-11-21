@@ -1,0 +1,14 @@
+# Contract RULES per index (not lot sizes, never cached quantities).
+# Lot size, tick size and actual expiry dates always come from the day's instrument
+# master; these rules are only used to *project* expiries beyond the master or offline.
+#
+# Rules in force since 1 Sep 2025 (NSE moved expiries to Tuesday, BSE to Thursday).
+# BANKNIFTY / FINNIFTY / MIDCPNIFTY / NIFTYNXT50 weeklies were discontinued in Nov 2024.
+# Holiday rule: if expiry day is a trading holiday, expiry moves to the PREVIOUS trading day.
+NIFTY:      { exchange: NSE, segment: NFO, weekly: true,  expiry_weekday: TUE, strike_step: 50,  kite_name: NIFTY,      nse_symbol: NIFTY }
+BANKNIFTY:  { exchange: NSE, segment: NFO, weekly: false, expiry_weekday: TUE, strike_step: 100, kite_name: BANKNIFTY,  nse_symbol: BANKNIFTY }
+FINNIFTY:   { exchange: NSE, segment: NFO, weekly: false, expiry_weekday: TUE, strike_step: 50,  kite_name: FINNIFTY,   nse_symbol: FINNIFTY }
+MIDCPNIFTY: { exchange: NSE, segment: NFO, weekly: false, expiry_weekday: TUE, strike_step: 25,  kite_name: MIDCPNIFTY, nse_symbol: MIDCPNIFTY }
+NIFTYNXT50: { exchange: NSE, segment: NFO, weekly: false, expiry_weekday: TUE, strike_step: 100, kite_name: NIFTYNXT50, nse_symbol: NIFTYNXT50 }
+SENSEX:     { exchange: BSE, segment: BFO, weekly: true,  expiry_weekday: THU, strike_step: 100, kite_name: SENSEX,     nse_symbol: null }
+BANKEX:     { exchange: BSE, segment: BFO, weekly: false, expiry_weekday: THU, strike_step: 100, kite_name: BANKEX,     nse_symbol: null }

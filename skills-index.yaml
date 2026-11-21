@@ -1,0 +1,63 @@
+# Single source of truth for the pack. README's catalogue and the .skill packages are
+# generated/validated from this file (scripts/validate_index.py, scripts/build_packages.py).
+version: 0.1.0
+skills:
+  - id: nse-instrument-master
+    tier: free
+    adapters: [kite_public, kotak_neo, file]
+    login: false
+    summary: Resolve "NIFTY 23 Nov 26000 CE" to the exact symbol, token, lot size, tick and expiry from the day's master.
+  - id: fno-expiry-calendar
+    tier: free
+    adapters: [kite_public, rules]
+    login: false
+    summary: Next N expiries, weekly vs monthly, holiday shifts, sessions to expiry, IST market state.
+  - id: option-chain-snapshot
+    tier: free
+    adapters: [nse_public, kite, local_store]
+    login: false
+    summary: Clean chain with own Black-76 IVs and Greeks, ATM, straddle, expected move, PCR, max pain.
+  - id: iv-skew-analyzer
+    tier: free
+    adapters: [nse_public, kite, nse_archives, local_store]
+    login: false
+    summary: OTM smile, 25/10-delta RR and BF, ATM term structure, IV percentile and rank.
+  - id: gex-dealer-positioning
+    tier: free
+    adapters: [nse_public, kite, local_store]
+    login: false
+    summary: GEX by strike, zero-gamma flip, call/put walls, with the dealer assumption stated.
+  - id: fno-cost-calculator
+    tier: free
+    adapters: [rates, kite_public]
+    login: false
+    summary: Round-trip brokerage, STT, exchange, SEBI, stamp, GST and breakeven points.
+  - id: fno-position-sizer
+    tier: free
+    adapters: [rates, kite_public]
+    login: false
+    summary: Units by risk budget and margin, exact max loss and breakevens, naked-leg warnings.
+  - id: broker-margin-check
+    tier: paid
+    adapters: [kite, kotak_neo]
+    login: true
+    summary: SPAN + exposure margin and hedge benefit for a basket via the broker API.
+  - id: sebi-order-prep
+    tier: paid
+    adapters: [kite_public, kite, kotak_neo]
+    login: true
+    summary: Dry-run payloads with freeze slicing, tick/band checks, throttle, Algo-ID; confirmed send only.
+  - id: fno-trade-journal
+    tier: paid
+    adapters: [local_store, rates]
+    login: false
+    summary: Plans, fills with exact costs, weekly post-mortem (win rate, cost drag, slippage).
+workflows:
+  - id: premarket-fno-check
+    skills: [fno-expiry-calendar, option-chain-snapshot, iv-skew-analyzer, gex-dealer-positioning]
+  - id: trade-plan-to-order
+    skills: [nse-instrument-master, fno-cost-calculator, fno-position-sizer, broker-margin-check, sebi-order-prep]
+  - id: expiry-day-risk
+    skills: [fno-expiry-calendar, option-chain-snapshot, gex-dealer-positioning, fno-position-sizer]
+  - id: weekly-review
+    skills: [fno-trade-journal, fno-cost-calculator]

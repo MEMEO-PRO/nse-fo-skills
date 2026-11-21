@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nsefno"
+version = "0.1.0"
+description = "Agent Skills + Python toolkit for NSE/BSE index options: instrument master, expiry calendar, option chain, Black-76 Greeks, IV skew, GEX, Indian F&O costs, position sizing and SEBI-aware order prep."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "Yash" }]
+keywords = ["nse", "nifty", "banknifty", "sensex", "options", "gex", "agent-skills", "claude-code", "india", "fno"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Office/Business :: Financial :: Investment",
+  "Intended Audience :: Financial and Insurance Industry",
+]
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "pyyaml>=6.0",
+  "requests>=2.31",
+]
+
+[project.optional-dependencies]
+charts = ["matplotlib>=3.8"]
+parquet = ["pyarrow>=15"]
+dev = ["pytest>=8", "ruff>=0.5", "matplotlib>=3.8"]
+all = ["matplotlib>=3.8", "pyarrow>=15"]
+
+[project.scripts]
+nsefno = "nsefno.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/MEMEO-PRO/nse-fo-skills"
+Issues = "https://github.com/MEMEO-PRO/nse-fo-skills/issues"
+
+[tool.setuptools.packages.find]
+include = ["nsefno*"]
+
+[tool.setuptools.package-data]
+nsefno = ["data/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]

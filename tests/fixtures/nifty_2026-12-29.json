@@ -1,0 +1,1846 @@
+{
+ "records": {
+  "timestamp": "20-Nov-2026 15:30:00",
+  "underlyingValue": 26152.35,
+  "expiryDates": [
+   "29-Dec-2026"
+  ],
+  "data": [
+   {
+    "strikePrice": 23200,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 23200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 392,
+     "changeinOpenInterest": -17,
+     "totalTradedVolume": 2668,
+     "impliedVolatility": 20.3,
+     "lastPrice": 3105.35,
+     "buyPrice1": 3096.0,
+     "sellPrice1": 3114.65,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 23200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 498,
+     "changeinOpenInterest": -50,
+     "totalTradedVolume": 2290,
+     "impliedVolatility": 20.3,
+     "lastPrice": 18.35,
+     "buyPrice1": 18.3,
+     "sellPrice1": 18.4,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 23300,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 23300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 492,
+     "changeinOpenInterest": -37,
+     "totalTradedVolume": 3152,
+     "impliedVolatility": 19.93,
+     "lastPrice": 3007.1,
+     "buyPrice1": 2998.1,
+     "sellPrice1": 3016.15,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 23300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 501,
+     "changeinOpenInterest": 8,
+     "totalTradedVolume": 2555,
+     "impliedVolatility": 19.93,
+     "lastPrice": 19.55,
+     "buyPrice1": 19.5,
+     "sellPrice1": 19.6,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 23400,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 23400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 535,
+     "changeinOpenInterest": 50,
+     "totalTradedVolume": 3438,
+     "impliedVolatility": 19.57,
+     "lastPrice": 2909.05,
+     "buyPrice1": 2900.3,
+     "sellPrice1": 2917.75,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 23400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 771,
+     "changeinOpenInterest": -20,
+     "totalTradedVolume": 4542,
+     "impliedVolatility": 19.57,
+     "lastPrice": 20.85,
+     "buyPrice1": 20.8,
+     "sellPrice1": 20.95,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 23500,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 23500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 640,
+     "changeinOpenInterest": -14,
+     "totalTradedVolume": 1285,
+     "impliedVolatility": 19.21,
+     "lastPrice": 2811.1,
+     "buyPrice1": 2802.7,
+     "sellPrice1": 2819.55,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 23500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 955,
+     "changeinOpenInterest": -19,
+     "totalTradedVolume": 3709,
+     "impliedVolatility": 19.21,
+     "lastPrice": 22.4,
+     "buyPrice1": 22.3,
+     "sellPrice1": 22.45,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 23600,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 23600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 747,
+     "changeinOpenInterest": 70,
+     "totalTradedVolume": 3606,
+     "impliedVolatility": 18.86,
+     "lastPrice": 2713.4,
+     "buyPrice1": 2705.25,
+     "sellPrice1": 2721.55,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 23600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1154,
+     "changeinOpenInterest": -147,
+     "totalTradedVolume": 7203,
+     "impliedVolatility": 18.86,
+     "lastPrice": 24.1,
+     "buyPrice1": 24.0,
+     "sellPrice1": 24.15,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 23700,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 23700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 710,
+     "changeinOpenInterest": -73,
+     "totalTradedVolume": 4233,
+     "impliedVolatility": 18.53,
+     "lastPrice": 2615.95,
+     "buyPrice1": 2608.1,
+     "sellPrice1": 2623.8,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 23700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1587,
+     "changeinOpenInterest": -90,
+     "totalTradedVolume": 9173,
+     "impliedVolatility": 18.53,
+     "lastPrice": 26.05,
+     "buyPrice1": 25.95,
+     "sellPrice1": 26.1,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 23800,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 23800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 767,
+     "changeinOpenInterest": 120,
+     "totalTradedVolume": 4857,
+     "impliedVolatility": 18.2,
+     "lastPrice": 2518.75,
+     "buyPrice1": 2511.2,
+     "sellPrice1": 2526.3,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 23800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1739,
+     "changeinOpenInterest": 333,
+     "totalTradedVolume": 10339,
+     "impliedVolatility": 18.2,
+     "lastPrice": 28.25,
+     "buyPrice1": 28.15,
+     "sellPrice1": 28.3,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 23900,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 23900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 951,
+     "changeinOpenInterest": 178,
+     "totalTradedVolume": 4347,
+     "impliedVolatility": 17.88,
+     "lastPrice": 2421.8,
+     "buyPrice1": 2414.55,
+     "sellPrice1": 2429.1,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 23900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 2819,
+     "changeinOpenInterest": 595,
+     "totalTradedVolume": 7368,
+     "impliedVolatility": 17.88,
+     "lastPrice": 30.75,
+     "buyPrice1": 30.65,
+     "sellPrice1": 30.85,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 24000,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 24000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1763,
+     "changeinOpenInterest": 30,
+     "totalTradedVolume": 8600,
+     "impliedVolatility": 17.57,
+     "lastPrice": 2325.25,
+     "buyPrice1": 2318.3,
+     "sellPrice1": 2332.25,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 24000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 5196,
+     "changeinOpenInterest": 724,
+     "totalTradedVolume": 19494,
+     "impliedVolatility": 17.57,
+     "lastPrice": 33.6,
+     "buyPrice1": 33.5,
+     "sellPrice1": 33.7,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 24100,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 24100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1225,
+     "changeinOpenInterest": -36,
+     "totalTradedVolume": 6579,
+     "impliedVolatility": 17.27,
+     "lastPrice": 2229.1,
+     "buyPrice1": 2222.4,
+     "sellPrice1": 2235.75,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 24100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 4893,
+     "changeinOpenInterest": 514,
+     "totalTradedVolume": 15558,
+     "impliedVolatility": 17.27,
+     "lastPrice": 36.85,
+     "buyPrice1": 36.75,
+     "sellPrice1": 36.95,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 24200,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 24200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1102,
+     "changeinOpenInterest": 174,
+     "totalTradedVolume": 7177,
+     "impliedVolatility": 16.98,
+     "lastPrice": 2133.4,
+     "buyPrice1": 2127.0,
+     "sellPrice1": 2139.8,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 24200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 7095,
+     "changeinOpenInterest": 1620,
+     "totalTradedVolume": 22949,
+     "impliedVolatility": 16.98,
+     "lastPrice": 40.55,
+     "buyPrice1": 40.4,
+     "sellPrice1": 40.65,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 24300,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 24300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1490,
+     "changeinOpenInterest": -107,
+     "totalTradedVolume": 11601,
+     "impliedVolatility": 16.7,
+     "lastPrice": 2038.2,
+     "buyPrice1": 2032.05,
+     "sellPrice1": 2044.3,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 24300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 9817,
+     "changeinOpenInterest": 1008,
+     "totalTradedVolume": 76801,
+     "impliedVolatility": 16.7,
+     "lastPrice": 44.75,
+     "buyPrice1": 44.65,
+     "sellPrice1": 44.9,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 24400,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 24400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1621,
+     "changeinOpenInterest": 285,
+     "totalTradedVolume": 3768,
+     "impliedVolatility": 16.43,
+     "lastPrice": 1943.6,
+     "buyPrice1": 1937.75,
+     "sellPrice1": 1949.4,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 24400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 12167,
+     "changeinOpenInterest": -1290,
+     "totalTradedVolume": 38461,
+     "impliedVolatility": 16.43,
+     "lastPrice": 49.55,
+     "buyPrice1": 49.4,
+     "sellPrice1": 49.7,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 24500,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 24500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1512,
+     "changeinOpenInterest": 307,
+     "totalTradedVolume": 4173,
+     "impliedVolatility": 16.16,
+     "lastPrice": 1849.65,
+     "buyPrice1": 1844.1,
+     "sellPrice1": 1855.2,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 24500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 15592,
+     "changeinOpenInterest": 890,
+     "totalTradedVolume": 110652,
+     "impliedVolatility": 16.16,
+     "lastPrice": 55.05,
+     "buyPrice1": 54.85,
+     "sellPrice1": 55.2,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 24600,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 24600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 2093,
+     "changeinOpenInterest": 299,
+     "totalTradedVolume": 6869,
+     "impliedVolatility": 15.91,
+     "lastPrice": 1756.5,
+     "buyPrice1": 1751.2,
+     "sellPrice1": 1761.75,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 24600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 21583,
+     "changeinOpenInterest": 3073,
+     "totalTradedVolume": 49884,
+     "impliedVolatility": 15.91,
+     "lastPrice": 61.3,
+     "buyPrice1": 61.15,
+     "sellPrice1": 61.5,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 24700,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 24700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 2157,
+     "changeinOpenInterest": 15,
+     "totalTradedVolume": 11945,
+     "impliedVolatility": 15.66,
+     "lastPrice": 1664.2,
+     "buyPrice1": 1659.2,
+     "sellPrice1": 1669.2,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 24700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 28031,
+     "changeinOpenInterest": 3578,
+     "totalTradedVolume": 144031,
+     "impliedVolatility": 15.66,
+     "lastPrice": 68.45,
+     "buyPrice1": 68.25,
+     "sellPrice1": 68.65,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 24800,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 24800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 2329,
+     "changeinOpenInterest": -141,
+     "totalTradedVolume": 11577,
+     "impliedVolatility": 15.42,
+     "lastPrice": 1572.9,
+     "buyPrice1": 1568.2,
+     "sellPrice1": 1577.65,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 24800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 28936,
+     "changeinOpenInterest": 1513,
+     "totalTradedVolume": 150972,
+     "impliedVolatility": 15.42,
+     "lastPrice": 76.55,
+     "buyPrice1": 76.3,
+     "sellPrice1": 76.75,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 24900,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 24900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 2796,
+     "changeinOpenInterest": 48,
+     "totalTradedVolume": 5920,
+     "impliedVolatility": 15.19,
+     "lastPrice": 1482.75,
+     "buyPrice1": 1478.3,
+     "sellPrice1": 1487.2,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 24900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 39168,
+     "changeinOpenInterest": -2268,
+     "totalTradedVolume": 252537,
+     "impliedVolatility": 15.19,
+     "lastPrice": 85.8,
+     "buyPrice1": 85.55,
+     "sellPrice1": 86.05,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 25000,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 25000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 4551,
+     "changeinOpenInterest": 55,
+     "totalTradedVolume": 33935,
+     "impliedVolatility": 14.97,
+     "lastPrice": 1393.85,
+     "buyPrice1": 1389.65,
+     "sellPrice1": 1398.0,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 25000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 69857,
+     "changeinOpenInterest": -32,
+     "totalTradedVolume": 285583,
+     "impliedVolatility": 14.97,
+     "lastPrice": 96.3,
+     "buyPrice1": 96.0,
+     "sellPrice1": 96.6,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 25100,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 25100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 3374,
+     "changeinOpenInterest": -346,
+     "totalTradedVolume": 17816,
+     "impliedVolatility": 14.76,
+     "lastPrice": 1306.35,
+     "buyPrice1": 1302.45,
+     "sellPrice1": 1310.3,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 25100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 57492,
+     "changeinOpenInterest": 4896,
+     "totalTradedVolume": 371597,
+     "impliedVolatility": 14.76,
+     "lastPrice": 108.25,
+     "buyPrice1": 107.9,
+     "sellPrice1": 108.55,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 25200,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 25200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 4510,
+     "changeinOpenInterest": 887,
+     "totalTradedVolume": 29152,
+     "impliedVolatility": 14.55,
+     "lastPrice": 1220.5,
+     "buyPrice1": 1216.85,
+     "sellPrice1": 1224.15,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 25200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 61546,
+     "changeinOpenInterest": 11574,
+     "totalTradedVolume": 216797,
+     "impliedVolatility": 14.55,
+     "lastPrice": 121.8,
+     "buyPrice1": 121.4,
+     "sellPrice1": 122.15,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 25300,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 25300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 4717,
+     "changeinOpenInterest": -13,
+     "totalTradedVolume": 16841,
+     "impliedVolatility": 14.36,
+     "lastPrice": 1136.4,
+     "buyPrice1": 1133.0,
+     "sellPrice1": 1139.8,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 25300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 61713,
+     "changeinOpenInterest": -792,
+     "totalTradedVolume": 352500,
+     "impliedVolatility": 14.36,
+     "lastPrice": 137.1,
+     "buyPrice1": 136.7,
+     "sellPrice1": 137.5,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 25400,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 25400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 5900,
+     "changeinOpenInterest": -579,
+     "totalTradedVolume": 27461,
+     "impliedVolatility": 14.17,
+     "lastPrice": 1054.3,
+     "buyPrice1": 1051.15,
+     "sellPrice1": 1057.5,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 25400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 61127,
+     "changeinOpenInterest": 8720,
+     "totalTradedVolume": 154577,
+     "impliedVolatility": 14.17,
+     "lastPrice": 154.45,
+     "buyPrice1": 153.95,
+     "sellPrice1": 154.9,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 25500,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 25500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 6399,
+     "changeinOpenInterest": 416,
+     "totalTradedVolume": 28331,
+     "impliedVolatility": 13.99,
+     "lastPrice": 974.4,
+     "buyPrice1": 971.5,
+     "sellPrice1": 977.35,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 25500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 67667,
+     "changeinOpenInterest": -464,
+     "totalTradedVolume": 215405,
+     "impliedVolatility": 13.99,
+     "lastPrice": 173.95,
+     "buyPrice1": 173.45,
+     "sellPrice1": 174.5,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 25600,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 25600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 10033,
+     "changeinOpenInterest": -425,
+     "totalTradedVolume": 28918,
+     "impliedVolatility": 13.81,
+     "lastPrice": 896.9,
+     "buyPrice1": 894.2,
+     "sellPrice1": 899.6,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 25600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 59878,
+     "changeinOpenInterest": -246,
+     "totalTradedVolume": 200632,
+     "impliedVolatility": 13.81,
+     "lastPrice": 195.85,
+     "buyPrice1": 195.25,
+     "sellPrice1": 196.45,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 25700,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 25700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 11318,
+     "changeinOpenInterest": 2657,
+     "totalTradedVolume": 31193,
+     "impliedVolatility": 13.65,
+     "lastPrice": 822.05,
+     "buyPrice1": 819.55,
+     "sellPrice1": 824.5,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 25700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 60632,
+     "changeinOpenInterest": 7716,
+     "totalTradedVolume": 443116,
+     "impliedVolatility": 13.65,
+     "lastPrice": 220.4,
+     "buyPrice1": 219.75,
+     "sellPrice1": 221.05,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 25800,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 25800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 16275,
+     "changeinOpenInterest": -1343,
+     "totalTradedVolume": 85017,
+     "impliedVolatility": 13.49,
+     "lastPrice": 750.0,
+     "buyPrice1": 747.75,
+     "sellPrice1": 752.25,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 25800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 65727,
+     "changeinOpenInterest": -7807,
+     "totalTradedVolume": 363454,
+     "impliedVolatility": 13.49,
+     "lastPrice": 247.8,
+     "buyPrice1": 247.05,
+     "sellPrice1": 248.55,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 25900,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 25900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 16098,
+     "changeinOpenInterest": 2690,
+     "totalTradedVolume": 122759,
+     "impliedVolatility": 13.34,
+     "lastPrice": 681.0,
+     "buyPrice1": 678.95,
+     "sellPrice1": 683.05,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 25900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 55340,
+     "changeinOpenInterest": -7549,
+     "totalTradedVolume": 132013,
+     "impliedVolatility": 13.34,
+     "lastPrice": 278.2,
+     "buyPrice1": 277.35,
+     "sellPrice1": 279.0,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 26000,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 26000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 34824,
+     "changeinOpenInterest": 6927,
+     "totalTradedVolume": 119119,
+     "impliedVolatility": 13.19,
+     "lastPrice": 615.25,
+     "buyPrice1": 613.4,
+     "sellPrice1": 617.1,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 26000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 83668,
+     "changeinOpenInterest": 1850,
+     "totalTradedVolume": 300446,
+     "impliedVolatility": 13.19,
+     "lastPrice": 311.85,
+     "buyPrice1": 310.95,
+     "sellPrice1": 312.8,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 26100,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 26100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 29312,
+     "changeinOpenInterest": -489,
+     "totalTradedVolume": 124027,
+     "impliedVolatility": 13.06,
+     "lastPrice": 552.95,
+     "buyPrice1": 551.3,
+     "sellPrice1": 554.6,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 26100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 48080,
+     "changeinOpenInterest": 2792,
+     "totalTradedVolume": 322304,
+     "impliedVolatility": 13.06,
+     "lastPrice": 348.95,
+     "buyPrice1": 347.9,
+     "sellPrice1": 350.0,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 26200,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 26200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 33831,
+     "changeinOpenInterest": -2571,
+     "totalTradedVolume": 157726,
+     "impliedVolatility": 12.93,
+     "lastPrice": 494.2,
+     "buyPrice1": 492.75,
+     "sellPrice1": 495.7,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 26200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 43783,
+     "changeinOpenInterest": 3763,
+     "totalTradedVolume": 341021,
+     "impliedVolatility": 12.93,
+     "lastPrice": 389.65,
+     "buyPrice1": 388.5,
+     "sellPrice1": 390.85,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 26300,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 26300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 32758,
+     "changeinOpenInterest": -126,
+     "totalTradedVolume": 216671,
+     "impliedVolatility": 12.81,
+     "lastPrice": 439.2,
+     "buyPrice1": 437.9,
+     "sellPrice1": 440.55,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 26300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 34642,
+     "changeinOpenInterest": 2923,
+     "totalTradedVolume": 207244,
+     "impliedVolatility": 12.81,
+     "lastPrice": 434.1,
+     "buyPrice1": 432.8,
+     "sellPrice1": 435.4,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 26400,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 26400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 48702,
+     "changeinOpenInterest": 6497,
+     "totalTradedVolume": 257310,
+     "impliedVolatility": 12.69,
+     "lastPrice": 388.05,
+     "buyPrice1": 386.85,
+     "sellPrice1": 389.2,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 26400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 27350,
+     "changeinOpenInterest": 3461,
+     "totalTradedVolume": 107853,
+     "impliedVolatility": 12.69,
+     "lastPrice": 482.3,
+     "buyPrice1": 480.85,
+     "sellPrice1": 483.75,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 26500,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 26500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 51560,
+     "changeinOpenInterest": 5465,
+     "totalTradedVolume": 346249,
+     "impliedVolatility": 12.58,
+     "lastPrice": 340.75,
+     "buyPrice1": 339.7,
+     "sellPrice1": 341.75,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 26500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 21500,
+     "changeinOpenInterest": -2777,
+     "totalTradedVolume": 112262,
+     "impliedVolatility": 12.58,
+     "lastPrice": 534.45,
+     "buyPrice1": 532.85,
+     "sellPrice1": 536.05,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 26600,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 26600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 59879,
+     "changeinOpenInterest": 6946,
+     "totalTradedVolume": 350940,
+     "impliedVolatility": 12.48,
+     "lastPrice": 297.35,
+     "buyPrice1": 296.45,
+     "sellPrice1": 298.25,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 26600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 16646,
+     "changeinOpenInterest": 43,
+     "totalTradedVolume": 105093,
+     "impliedVolatility": 12.48,
+     "lastPrice": 590.45,
+     "buyPrice1": 588.65,
+     "sellPrice1": 592.2,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 26700,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 26700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 51010,
+     "changeinOpenInterest": 10537,
+     "totalTradedVolume": 370217,
+     "impliedVolatility": 12.39,
+     "lastPrice": 257.8,
+     "buyPrice1": 257.05,
+     "sellPrice1": 258.6,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 26700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 15462,
+     "changeinOpenInterest": -1325,
+     "totalTradedVolume": 41627,
+     "impliedVolatility": 12.39,
+     "lastPrice": 650.35,
+     "buyPrice1": 648.4,
+     "sellPrice1": 652.3,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 26800,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 26800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 68989,
+     "changeinOpenInterest": 1410,
+     "totalTradedVolume": 249889,
+     "impliedVolatility": 12.3,
+     "lastPrice": 222.1,
+     "buyPrice1": 221.45,
+     "sellPrice1": 222.8,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 26800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 10300,
+     "changeinOpenInterest": 1275,
+     "totalTradedVolume": 30580,
+     "impliedVolatility": 12.3,
+     "lastPrice": 714.0,
+     "buyPrice1": 711.85,
+     "sellPrice1": 716.15,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 26900,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 26900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 63396,
+     "changeinOpenInterest": 7862,
+     "totalTradedVolume": 400956,
+     "impliedVolatility": 12.22,
+     "lastPrice": 190.1,
+     "buyPrice1": 189.5,
+     "sellPrice1": 190.65,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 26900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 7181,
+     "changeinOpenInterest": 1323,
+     "totalTradedVolume": 33069,
+     "impliedVolatility": 12.22,
+     "lastPrice": 781.4,
+     "buyPrice1": 779.05,
+     "sellPrice1": 783.75,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 27000,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 27000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 100496,
+     "changeinOpenInterest": 8536,
+     "totalTradedVolume": 369906,
+     "impliedVolatility": 12.15,
+     "lastPrice": 161.6,
+     "buyPrice1": 161.1,
+     "sellPrice1": 162.05,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 27000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 11928,
+     "changeinOpenInterest": -657,
+     "totalTradedVolume": 62697,
+     "impliedVolatility": 12.15,
+     "lastPrice": 852.35,
+     "buyPrice1": 849.8,
+     "sellPrice1": 854.9,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 27100,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 27100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 56574,
+     "changeinOpenInterest": 6022,
+     "totalTradedVolume": 419294,
+     "impliedVolatility": 12.08,
+     "lastPrice": 136.5,
+     "buyPrice1": 136.1,
+     "sellPrice1": 136.9,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 27100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 5989,
+     "changeinOpenInterest": -515,
+     "totalTradedVolume": 34432,
+     "impliedVolatility": 12.08,
+     "lastPrice": 926.65,
+     "buyPrice1": 923.85,
+     "sellPrice1": 929.4,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 27200,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 27200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 67142,
+     "changeinOpenInterest": -4021,
+     "totalTradedVolume": 301363,
+     "impliedVolatility": 12.02,
+     "lastPrice": 114.5,
+     "buyPrice1": 114.15,
+     "sellPrice1": 114.85,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 27200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 4675,
+     "changeinOpenInterest": 725,
+     "totalTradedVolume": 22005,
+     "impliedVolatility": 12.02,
+     "lastPrice": 1004.1,
+     "buyPrice1": 1001.1,
+     "sellPrice1": 1007.1,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 27300,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 27300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 58272,
+     "changeinOpenInterest": 7433,
+     "totalTradedVolume": 240007,
+     "impliedVolatility": 11.96,
+     "lastPrice": 95.45,
+     "buyPrice1": 95.2,
+     "sellPrice1": 95.75,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 27300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 3829,
+     "changeinOpenInterest": 348,
+     "totalTradedVolume": 23679,
+     "impliedVolatility": 11.96,
+     "lastPrice": 1084.45,
+     "buyPrice1": 1081.2,
+     "sellPrice1": 1087.7,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 27400,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 27400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 50932,
+     "changeinOpenInterest": -276,
+     "totalTradedVolume": 234613,
+     "impliedVolatility": 11.91,
+     "lastPrice": 79.1,
+     "buyPrice1": 78.85,
+     "sellPrice1": 79.3,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 27400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 3503,
+     "changeinOpenInterest": -227,
+     "totalTradedVolume": 10123,
+     "impliedVolatility": 11.91,
+     "lastPrice": 1167.5,
+     "buyPrice1": 1164.0,
+     "sellPrice1": 1171.0,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 27500,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 27500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 38287,
+     "changeinOpenInterest": 7690,
+     "totalTradedVolume": 303688,
+     "impliedVolatility": 11.87,
+     "lastPrice": 65.1,
+     "buyPrice1": 64.9,
+     "sellPrice1": 65.3,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 27500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 2472,
+     "changeinOpenInterest": -82,
+     "totalTradedVolume": 7886,
+     "impliedVolatility": 11.87,
+     "lastPrice": 1252.95,
+     "buyPrice1": 1249.2,
+     "sellPrice1": 1256.7,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 27600,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 27600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 39771,
+     "changeinOpenInterest": 2149,
+     "totalTradedVolume": 275352,
+     "impliedVolatility": 11.83,
+     "lastPrice": 53.3,
+     "buyPrice1": 53.15,
+     "sellPrice1": 53.45,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 27600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 2145,
+     "changeinOpenInterest": 452,
+     "totalTradedVolume": 10261,
+     "impliedVolatility": 11.83,
+     "lastPrice": 1340.5,
+     "buyPrice1": 1336.5,
+     "sellPrice1": 1344.55,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 27700,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 27700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 35379,
+     "changeinOpenInterest": 6397,
+     "totalTradedVolume": 264086,
+     "impliedVolatility": 11.8,
+     "lastPrice": 43.35,
+     "buyPrice1": 43.25,
+     "sellPrice1": 43.5,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 27700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 2079,
+     "changeinOpenInterest": 215,
+     "totalTradedVolume": 11156,
+     "impliedVolatility": 11.8,
+     "lastPrice": 1430.0,
+     "buyPrice1": 1425.7,
+     "sellPrice1": 1434.3,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 27800,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 27800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 24023,
+     "changeinOpenInterest": 1456,
+     "totalTradedVolume": 181607,
+     "impliedVolatility": 11.78,
+     "lastPrice": 35.1,
+     "buyPrice1": 35.0,
+     "sellPrice1": 35.2,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 27800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 2083,
+     "changeinOpenInterest": -273,
+     "totalTradedVolume": 12456,
+     "impliedVolatility": 11.78,
+     "lastPrice": 1521.15,
+     "buyPrice1": 1516.6,
+     "sellPrice1": 1525.75,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 27900,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 27900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 20025,
+     "changeinOpenInterest": -1714,
+     "totalTradedVolume": 56803,
+     "impliedVolatility": 11.76,
+     "lastPrice": 28.25,
+     "buyPrice1": 28.2,
+     "sellPrice1": 28.35,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 27900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1811,
+     "changeinOpenInterest": 441,
+     "totalTradedVolume": 9274,
+     "impliedVolatility": 11.76,
+     "lastPrice": 1613.75,
+     "buyPrice1": 1608.9,
+     "sellPrice1": 1618.6,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 28000,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 28000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 25398,
+     "changeinOpenInterest": 1624,
+     "totalTradedVolume": 177170,
+     "impliedVolatility": 11.75,
+     "lastPrice": 22.65,
+     "buyPrice1": 22.6,
+     "sellPrice1": 22.75,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 28000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 2574,
+     "changeinOpenInterest": -294,
+     "totalTradedVolume": 8430,
+     "impliedVolatility": 11.75,
+     "lastPrice": 1707.55,
+     "buyPrice1": 1702.45,
+     "sellPrice1": 1712.7,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 28100,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 28100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 13903,
+     "changeinOpenInterest": 795,
+     "totalTradedVolume": 82672,
+     "impliedVolatility": 11.74,
+     "lastPrice": 18.1,
+     "buyPrice1": 18.05,
+     "sellPrice1": 18.15,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 28100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1463,
+     "changeinOpenInterest": 167,
+     "totalTradedVolume": 9368,
+     "impliedVolatility": 11.74,
+     "lastPrice": 1802.4,
+     "buyPrice1": 1797.0,
+     "sellPrice1": 1807.8,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 28200,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 28200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 9465,
+     "changeinOpenInterest": -456,
+     "totalTradedVolume": 29555,
+     "impliedVolatility": 11.74,
+     "lastPrice": 14.4,
+     "buyPrice1": 14.35,
+     "sellPrice1": 14.45,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 28200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1401,
+     "changeinOpenInterest": -190,
+     "totalTradedVolume": 8609,
+     "impliedVolatility": 11.74,
+     "lastPrice": 1898.1,
+     "buyPrice1": 1892.4,
+     "sellPrice1": 1903.8,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 28300,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 28300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 7621,
+     "changeinOpenInterest": -361,
+     "totalTradedVolume": 17461,
+     "impliedVolatility": 11.75,
+     "lastPrice": 11.4,
+     "buyPrice1": 11.4,
+     "sellPrice1": 11.45,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 28300,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1069,
+     "changeinOpenInterest": -8,
+     "totalTradedVolume": 5098,
+     "impliedVolatility": 11.75,
+     "lastPrice": 1994.55,
+     "buyPrice1": 1988.6,
+     "sellPrice1": 2000.55,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 28400,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 28400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 4833,
+     "changeinOpenInterest": 1144,
+     "totalTradedVolume": 13126,
+     "impliedVolatility": 11.76,
+     "lastPrice": 9.05,
+     "buyPrice1": 9.0,
+     "sellPrice1": 9.05,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 28400,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1130,
+     "changeinOpenInterest": -137,
+     "totalTradedVolume": 8621,
+     "impliedVolatility": 11.76,
+     "lastPrice": 2091.6,
+     "buyPrice1": 2085.3,
+     "sellPrice1": 2097.85,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 28500,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 28500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 3361,
+     "changeinOpenInterest": 506,
+     "totalTradedVolume": 6784,
+     "impliedVolatility": 11.78,
+     "lastPrice": 7.15,
+     "buyPrice1": 7.1,
+     "sellPrice1": 7.15,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 28500,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 888,
+     "changeinOpenInterest": 116,
+     "totalTradedVolume": 5123,
+     "impliedVolatility": 11.78,
+     "lastPrice": 2189.1,
+     "buyPrice1": 2182.5,
+     "sellPrice1": 2195.65,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 28600,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 28600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 2762,
+     "changeinOpenInterest": -217,
+     "totalTradedVolume": 12172,
+     "impliedVolatility": 11.8,
+     "lastPrice": 5.6,
+     "buyPrice1": 5.6,
+     "sellPrice1": 5.65,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 28600,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 844,
+     "changeinOpenInterest": -108,
+     "totalTradedVolume": 5919,
+     "impliedVolatility": 11.8,
+     "lastPrice": 2287.0,
+     "buyPrice1": 2280.15,
+     "sellPrice1": 2293.85,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 28700,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 28700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1776,
+     "changeinOpenInterest": -73,
+     "totalTradedVolume": 5922,
+     "impliedVolatility": 11.83,
+     "lastPrice": 4.4,
+     "buyPrice1": 4.4,
+     "sellPrice1": 4.45,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 28700,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 772,
+     "changeinOpenInterest": -93,
+     "totalTradedVolume": 2676,
+     "impliedVolatility": 11.83,
+     "lastPrice": 2385.2,
+     "buyPrice1": 2378.05,
+     "sellPrice1": 2392.35,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 28800,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 28800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1256,
+     "changeinOpenInterest": -45,
+     "totalTradedVolume": 8017,
+     "impliedVolatility": 11.86,
+     "lastPrice": 3.5,
+     "buyPrice1": 3.45,
+     "sellPrice1": 3.5,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 28800,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 687,
+     "changeinOpenInterest": 152,
+     "totalTradedVolume": 4263,
+     "impliedVolatility": 11.86,
+     "lastPrice": 2483.7,
+     "buyPrice1": 2476.25,
+     "sellPrice1": 2491.15,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 28900,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 28900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 941,
+     "changeinOpenInterest": -9,
+     "totalTradedVolume": 2577,
+     "impliedVolatility": 11.9,
+     "lastPrice": 2.75,
+     "buyPrice1": 2.7,
+     "sellPrice1": 2.75,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 28900,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 558,
+     "changeinOpenInterest": 56,
+     "totalTradedVolume": 3563,
+     "impliedVolatility": 11.9,
+     "lastPrice": 2582.35,
+     "buyPrice1": 2574.6,
+     "sellPrice1": 2590.1,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 29000,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 29000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 1170,
+     "changeinOpenInterest": -2,
+     "totalTradedVolume": 7976,
+     "impliedVolatility": 11.94,
+     "lastPrice": 2.15,
+     "buyPrice1": 2.15,
+     "sellPrice1": 2.2,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 29000,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 996,
+     "changeinOpenInterest": -105,
+     "totalTradedVolume": 2417,
+     "impliedVolatility": 11.94,
+     "lastPrice": 2681.2,
+     "buyPrice1": 2673.15,
+     "sellPrice1": 2689.25,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 29100,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 29100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 675,
+     "changeinOpenInterest": 39,
+     "totalTradedVolume": 3071,
+     "impliedVolatility": 11.99,
+     "lastPrice": 1.7,
+     "buyPrice1": 1.7,
+     "sellPrice1": 1.75,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 29100,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 515,
+     "changeinOpenInterest": 84,
+     "totalTradedVolume": 1245,
+     "impliedVolatility": 11.99,
+     "lastPrice": 2780.15,
+     "buyPrice1": 2771.8,
+     "sellPrice1": 2788.5,
+     "underlyingValue": 26152.35
+    }
+   },
+   {
+    "strikePrice": 29200,
+    "expiryDates": "29-Dec-2026",
+    "CE": {
+     "strikePrice": 29200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 592,
+     "changeinOpenInterest": 143,
+     "totalTradedVolume": 2663,
+     "impliedVolatility": 12.05,
+     "lastPrice": 1.35,
+     "buyPrice1": 1.3,
+     "sellPrice1": 1.35,
+     "underlyingValue": 26152.35
+    },
+    "PE": {
+     "strikePrice": 29200,
+     "expiryDate": "29-Dec-2026",
+     "underlying": "NIFTY",
+     "openInterest": 443,
+     "changeinOpenInterest": -13,
+     "totalTradedVolume": 2447,
+     "impliedVolatility": 12.05,
+     "lastPrice": 2879.2,
+     "buyPrice1": 2870.55,
+     "sellPrice1": 2887.85,
+     "underlyingValue": 26152.35
+    }
+   }
+  ]
+ },
+ "_synthetic": {
+  "generator": "scripts/make_fixtures.py",
+  "atm_iv": 0.128,
+  "rate": 0.055
+ }
+}

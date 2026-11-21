@@ -1,0 +1,14 @@
+id: weekly-review
+title: Weekly post-mortem
+when: Saturday / after the last expiry of the week
+steps:
+  - skill: fno-trade-journal
+    run: python skills/fno-trade-journal/scripts/journal.py import --csv <tradebook.csv>
+    optional: only if new fills
+  - skill: fno-trade-journal
+    run: python skills/fno-trade-journal/scripts/journal.py review --days 7 --md
+    capture: win rate, net P&L, cost drag, slippage, by-setup table
+  - skill: fno-cost-calculator
+    run: python skills/fno-cost-calculator/scripts/cost.py --index NIFTY --leg "<typical trade>" --md
+    capture: cost per typical trade, to put cost drag in context
+output: Review table + 3 questions for the trader. No trade recommendations.

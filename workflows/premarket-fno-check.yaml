@@ -1,0 +1,22 @@
+id: premarket-fno-check
+title: Pre-market F&O posture (one page)
+when: 09:05-09:25 IST on a trading day (re-run after 09:20 once the chain has live quotes)
+inputs: { index: NIFTY }
+steps:
+  - skill: fno-expiry-calendar
+    run: python skills/fno-expiry-calendar/scripts/expiry.py {index} -n 4 --md
+    capture: next expiry, sessions to expiry, holiday shifts, is_expiry_today
+    gate: if market state is holiday/weekend, stop and say so
+  - skill: option-chain-snapshot
+    run: python skills/option-chain-snapshot/scripts/snapshot.py {index} --expiry next --save --md
+    capture: spot, forward, ATM IV, straddle, expected move, PCR, max pain
+    gate: on StaleDataError stop - do not analyse a stale chain
+  - skill: iv-skew-analyzer
+    run: python skills/iv-skew-analyzer/scripts/skew.py {index} --expiries next,far --md
+    capture: 25d RR/BF per expiry, term-structure shape, IV percentile
+  - skill: gex-dealer-positioning
+    run: python skills/gex-dealer-positioning/scripts/gex.py {index} --expiry next --compare-previous --chart gex.png --md
+    capture: spot vs flip, walls, net GEX, change vs previous snapshot, assumption
+output: |
+  One page: Expiry | ATM & straddle (expected move) | PCR & max pain | Skew & term structure |
+  GEX regime, flip, walls (with assumption) | What changed since yesterday. No trade advice.

@@ -1,0 +1,23 @@
+id: trade-plan-to-order
+title: Turn a stated idea into a sized, costed, compliance-checked dry-run order
+inputs: { index: NIFTY, idea: "user-described structure", capital: null, risk_pct: null }
+steps:
+  - skill: nse-instrument-master
+    run: python skills/nse-instrument-master/scripts/instrument.py resolve "<each leg>" --md
+    capture: tradingsymbol, lot size, tick, expiry per leg
+    gate: any leg unresolved -> stop and show nearest listed strikes/expiries
+  - skill: fno-cost-calculator
+    run: python skills/fno-cost-calculator/scripts/cost.py --index {index} --leg "..." --md
+    capture: round-trip cost, breakeven points
+  - skill: fno-position-sizer
+    run: python skills/fno-position-sizer/scripts/size.py --index {index} --capital {capital} --risk-pct {risk_pct} --spot <spot> --leg "..." --cost-per-unit <cost/units> --md
+    capture: units allowed, max loss, naked-leg warnings
+    gate: unlimited risk or 0 units -> stop and explain
+  - skill: broker-margin-check
+    optional: requires broker login
+    run: python skills/broker-margin-check/scripts/margin.py --broker kite --legs basket.json --md
+    capture: required margin, hedge benefit
+  - skill: sebi-order-prep
+    run: python skills/sebi-order-prep/scripts/order.py prep --plan plan.json --index {index} --freeze-qty <qty> --md
+    gate: show full dry run; send ONLY on explicit user confirmation within 60 s
+output: Dry-run order table + cost + max loss + margin + every warning. Nothing is sent without confirmation.
