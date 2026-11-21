@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+- Removed the GitHub Actions workflows (CI and release). Run `pytest`, `ruff check .` and
+  `python scripts/validate_index.py` locally; build `.skill` packages with `scripts/build_packages.py`.
+
 ## 0.2.0 - 2026-11-21
 - **12 broker adapters** behind one interface (`nsefno/brokers/`): Zerodha Kite, Upstox, Dhan, Fyers,
   Angel One, Groww, Shoonya (Finvasia), ICICI Breeze, 5paisa, Alice Blue, Kotak Neo, Symphony XTS

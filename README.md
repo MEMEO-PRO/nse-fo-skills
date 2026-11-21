@@ -6,7 +6,6 @@
 
 Works with Claude Code, Codex CLI, Cursor, Gemini CLI and the Claude app's Skills tab.
 
-[![CI](https://github.com/MEMEO-PRO/nse-fo-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/MEMEO-PRO/nse-fo-skills/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Skills](https://img.shields.io/badge/skills-10-orange)
@@ -32,7 +31,7 @@ General-purpose coding agents are good at maths but get Indian derivatives mecha
 | "SENSEX lot is 20" / "SENSEX lot is 25" | **Both are correct at once.** It is 20 for Nov/Dec-2026 expiries and 25 from Jan-2027 | `nsefno master lots SENSEX` lists the lot for every series |
 | "NIFTY expires on Thursday" | It moved to **Tuesday** on 1 Sep 2025. SENSEX moved to Thursday | The rule set and the master agree, and a test checks this against the live exchange list |
 | "Next NIFTY expiry is Tue 24 Nov" | **Mon 23 Nov**, because 24 Nov is Guru Nanak Jayanti and expiry moves to the previous trading day | Official 2026 holiday list; the output shows `shifted_from` and the reason |
-| "STT on option sells is 0.0625%" (or 0.1%) | **0.15%** of premium from 1 Apr 2026 (Budget 2026). Futures are **0.05%** | Rates are dated, each has a source, and CI fails if the rate file is older than 90 days |
+| "STT on option sells is 0.0625%" (or 0.1%) | **0.15%** of premium from 1 Apr 2026 (Budget 2026). Futures are **0.05%** | Rates are dated, each has a source, and a test fails if the rate file is older than 90 days |
 | "BANKNIFTY weekly expiry" | Weekly contracts were discontinued in Nov 2024. It is **monthly only** | Rules per index in `indices.yaml` |
 | Black-Scholes on spot with a made-up dividend yield | Index options are European and cash-settled, so price them with **Black-76 on the forward** | IVs are solved on bid/ask mids against the put-call-parity forward |
 
@@ -240,7 +239,7 @@ python scripts/validate_index.py           # Agent Skills spec + index/workflow 
 | **Orders** | Freeze slicing edge cases, tick and band checks, a token bound to the payload with a 60 s expiry, blocks in pre-open and after close, stop on the first error, a sliding-window throttle (never more than 8 per second), log redaction |
 | **Brokers** | Masters parsed from real-format slices of all 10 public files must agree on lots, expiries and exchange tokens. Freeze vs max-qty caps. Order payloads for every broker. Mocked chain, margin and order calls checked for exact URLs, headers (Breeze SHA-256 checksum, Shoonya jData/jKey, Fyers `app:token`) and parsing. OI unit detection |
 | **Packaging** | Each `.skill` zip runs **in isolation** (`python -I`) with the vendored package |
-| **CI** | Python 3.11 to 3.13, ruff, index validator, package build, gitleaks secret scan, and a weekly run that fails if `charges.yaml` is more than 90 days old |
+| **Freshness** | A test fails when `charges.yaml` was last reviewed more than 90 days ago, so rates get re-checked after each budget or exchange circular |
 
 > [!NOTE]
 > **Live sources.** All 10 public broker masters and the NSE bhavcopy archive were checked live while this was built. The real bhavcopy IV history confirmed the holiday-shifted expiries (Mon 19 Oct, Mon 9 Nov 2026). The NSE public option-chain endpoint is unofficial: the parser is tested against its documented JSON layout, but NSE changes it without notice, so it is **best effort** and not suitable for live trading. Use `--source kite` for a robust feed.
@@ -254,8 +253,8 @@ python scripts/validate_index.py           # Agent Skills spec + index/workflow 
 | Accidental live orders | Dry run by default. Sending needs an HMAC token that is bound to the exact payload and expires in 60 s. Blocked outside 09:15–15:30 IST. `max_lots_per_leg` cap. Stops on the first error |
 | Exchange rejects | Quantity must be whole lots from the master. Slices stay below the freeze quantity. Tick size and price band are checked |
 | Redistributing data | No NSE market data in the repo, and every user fetches with their own session |
-| Credential leaks | Keys only in env or keychain, redacted logs, gitleaks in CI |
-| Stale rates after a budget | Each rate has `effective_from` and a source, and CI fails at 90 days |
+| Credential leaks | Keys only in env or keychain, redacted logs |
+| Stale rates after a budget | Each rate has `effective_from` and a source, and the test suite fails at 90 days |
 
 ## Configuration
 

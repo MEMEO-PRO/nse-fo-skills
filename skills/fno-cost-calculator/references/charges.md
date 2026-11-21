@@ -20,5 +20,5 @@ Formulas per leg (turnover = price × quantity):
 - gst = 18% × (brokerage + txn + sebi)
 - breakeven_points = total round-trip cost / position units (max leg quantity)
 
-`charges.yaml` has a `reviewed_on` date; CI fails when it is older than 90 days so the
+`charges.yaml` has a `reviewed_on` date; the test suite fails when it is older than 90 days so the
 table is re-checked after every budget / exchange circular.

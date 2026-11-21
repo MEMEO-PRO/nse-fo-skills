@@ -1,5 +1,5 @@
 # Statutory + exchange charges for Indian equity derivatives (F&O).
-# Every rate carries effective_from + a source link. A CI test fails when
+# Every rate carries effective_from + a source link. A test fails when
 # `reviewed_on` is older than 90 days, forcing a re-check after budgets/circulars.
 #
 # Units: `pct` values are PERCENT (0.15 means 0.15%). `per_crore` is INR per 1e7 turnover.
