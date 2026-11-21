@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build self-contained .skill archives (zip) for the Claude web app / any agent.
+"""Build self-contained .skill archives (zip) for any agent or app that accepts skill uploads.
 
 Each archive contains the skill folder at its root with the shared `nsefno` package
 vendored into scripts/, so the scripts run without `pip install` (numpy, scipy, pyyaml,

@@ -4,7 +4,7 @@
 
 **Agent Skills for Indian F&O traders: option chain, GEX, skew, expiry, costs, sizing and SEBI-aware order prep, across 12 brokers.**
 
-Works with Claude Code, Codex CLI, Cursor, Gemini CLI and the Claude app's Skills tab.
+Works with any coding agent that supports the Agent Skills format (Codex CLI, Cursor, Gemini CLI and others).
 
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -86,8 +86,8 @@ nsefno expiry NIFTY --md          # smoke test; no login needed
 
 | Agent | How to install |
 |---|---|
-| **Claude Code** | Copy or symlink the skill folders: `ln -s "$PWD"/skills/* ~/.claude/skills/` (user scope) or into `.claude/skills/` of a project |
-| **Claude app (Skills tab)** | `python scripts/build_packages.py` → upload any `skill-packages/<name>.skill` (each one bundles `nsefno`) |
+| **Any Agent Skills-compatible agent** | Copy or symlink the skill folders into the agent's skills directory (user or project scope) |
+| **Apps with a skill upload** | `python scripts/build_packages.py` → upload any `skill-packages/<name>.skill` (each one bundles `nsefno`) |
 | **Codex CLI / Cursor / Gemini CLI** | Point the agent at `skills/<name>/SKILL.md`; all of them follow the [Agent Skills](https://agentskills.io/specification) format |
 
 ### 3. Ask questions like a trader
@@ -172,7 +172,7 @@ Try it: *"Run the premarket-fno-check workflow for NIFTY."*
 
 ```mermaid
 flowchart LR
-  A["Agent<br/>(Claude Code, Codex, Cursor, Gemini)"] -->|reads SKILL.md, runs scripts| S["skills/*<br/>10 skills + 4 workflows"]
+  A["Agent<br/>(Codex, Cursor, Gemini, ...)"] -->|reads SKILL.md, runs scripts| S["skills/*<br/>10 skills + 4 workflows"]
   S --> P["nsefno package<br/>session · calendar · instruments · chain<br/>greeks · gex · skew · costs · sizer · orders · journal"]
   P --> D1["10 public broker masters<br/>(no login)"]
   P --> D2["nse_public · gdfl<br/>option chain"]
@@ -319,6 +319,6 @@ Analytics only. This is not investment advice and not a recommendation to buy or
 - Expiry day changes (1 Sep 2025): [Business Standard](https://www.business-standard.com/markets/news/nse-bids-adieu-to-thursday-expiry-as-dates-swap-come-into-effect-explained-125082800635_1.html)
 - 2026 trading holidays: NSE circulars NSE/FAOP/71777 and NSE/FAOP/72262 ([NSE holidays](https://www.nseindia.com/resources/exchange-communication-holidays))
 - Retail algo framework (1 Apr 2026): [Fyers summary](https://support.fyers.in/portal/en/kb/articles/what-are-the-new-sebi-rules-for-retail-algo-trading-from-april-01-2026)
-- Format inspiration: [tradermonty/claude-trading-skills](https://github.com/tradermonty/claude-trading-skills) · [Agent Skills specification](https://agentskills.io/specification)
+- Format: [Agent Skills specification](https://agentskills.io/specification)
 
 <div align="center"><sub>MIT licensed · Built for traders who check the contract note.</sub></div>
